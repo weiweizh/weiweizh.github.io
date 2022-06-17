@@ -1,8 +1,16 @@
 /* Here I can overwrite the default tailwind styles by using extend */
 module.exports = {
+  
+  /* under content bracket, make sure to include all the 
+  files you have that uses tailwind classes so that it 
+  scans those files to generate the output css */
   content: 
     [
       './dist/**/*.{html,css,js}',
+      '*.js',
+      '*.html',
+      './src/*.css',
+    
     ],
   theme: {
     extend: {

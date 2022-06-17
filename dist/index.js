@@ -2,13 +2,7 @@ const iconMenu = document.querySelector('#icon-menu');
 const menu = document.querySelector('#menu');
 const navBar = document.querySelector('#nav-bar');
 const menuItems = document.querySelectorAll('#menu li a');
-/*
-const menuAbout = document.querySelector('#menu-about');
-const menuService = document.querySelector('#menu-service');
-const menuWork = document.querySelector('#menu-work');
-const menuCollaborate = document.querySelector('#menu-collaborate');
-const menuMore = document.querySelector('#menu-more');
-*/
+
 /*function to show and hide menu on click */
 iconMenu.addEventListener('click', ()=>{
     if(menu.classList.contains('hidden')){
