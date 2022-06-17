@@ -1,0 +1,38 @@
+/* import tailwind class, fonts, etc. you need here */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&display=swap');
+
+@font-face{
+    /*font-family:'ButlerStencil';
+    src: url(./dist/font/ButlerStencil-Bold.woff); */
+    font-family:'Butler';
+    src: url(./dist/font/ButlerStencil-Bold.woff);
+} 
+
+@tailwind base;
+html {
+  scroll-behavior: smooth;
+}
+@tailwind components;
+@tailwind utilities;
+
+.boldheader{
+    @apply text-4xl lg:text-8xl 2xl:text-8xl font-bold font-header underline decoration-secondary-teal;
+}
+
+.gridcenter{
+    @apply grid justify-items-center;
+}
+
+.btn{
+    @apply text-primary-600 rounded-md py-2 px-3 text-sm cursor-pointer tracking-wider border hover:text-primary-1000 transition ease-out duration-500;
+}
+
+.title-2{
+    @apply uppercase text-primary-600;
+}
+
+.active{
+   @apply text-primary-1000 underline underline-offset-[21px] decoration-primary-1000 decoration-1;
+}
+
