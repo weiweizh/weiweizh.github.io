@@ -1,0 +1,7 @@
+{
+    "name": "My website",
+    "icons": [
+        {"src":"img/icon-w-192.png", "type":"img/png", "size":"192x192"},
+        {"src":"img/icon-w-512.png", "type":"img/png", "size":"512x512"}
+    ]
+}
