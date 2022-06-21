@@ -38,6 +38,10 @@ html {
    @apply text-primary-1000 underline underline-offset-[21px] decoration-primary-1000 decoration-1;
 }
 
+.activeM{
+    @apply text-primary-1000 underline underline-offset-[4px] decoration-primary-1000 decoration-1;
+}
+
 @layer utilities{
    .animation-delay-2000{
       animation-delay: 2s;
