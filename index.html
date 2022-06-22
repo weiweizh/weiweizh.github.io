@@ -10,7 +10,7 @@
   <link rel="manifest" href="dist/manifest.webmanifest">
 </head>
 
-<body class="text-primary-1000 font-body bg-tertiary my-2 scroll-smooth">
+<body class="text-primary-1000 font-body bg-tertiary mt-2 scroll-smooth">
   <div> <!--whole body container wrapper-->
     <div class="sticky top-0 bg-tertiary bg-opacity-90 z-50">
       <nav class="border-b flex md:justify-between" id="nav-bar"> <!-- fixed header-->
@@ -66,21 +66,20 @@
     <div class="relative basis-2/3 pt-4 lg:pt-56 z-40">
       <div>
         <h1 class="boldheader ">
-          <Span class="">Hi, I'm Weiwei</Span> 
-        </h1>
-        
+          <Span class="">Hi, I’m Weiwei</Span> 
+        </h1>        
       </div>
-      <div class="w-full lg:w-4/5 2xl:w-3/5">
-        <p class="pt-8 mr-8 2xl:mr-12">
+      <div class="pt-8 w-full lg:w-4/5 2xl:w-3/5">
+        <p class="leading-relaxed mr-8 2xl:mr-12">
           
             I help startups <span class="underline decoration-secondary-yellow  decoration-4">research, strategize, design</span> and <span class="underline decoration-secondary-teal decoration-4">execute</span> their visions through a <span class="font-extrabold">user-centered design process</span>.
             
        </p>
-       <p class="pt-4 mr-8 2xl:mr-12 ">
+       <p class="leading-relaxed pt-3 mr-8 2xl:mr-12 ">
         My design expertise is in solving <span class="underline decoration-secondary-yellow decoration-4">complex problems</span> related to data, ML models with <span class="font-extrabold">usable and elegant designs</span>. 
        </p>
 
-        <p class="pt-4 mr-8 2xl:mr-12">
+        <p class="leading-relaxed pt-3 mr-8 2xl:mr-12">
             Currently leading design at Wise Systems in Cambridge, MA.
             I used to study and work in London, Stockholm and Guangzhou.
         </p>
@@ -107,15 +106,14 @@
    </div> <!--about end-->
 
    <div class="pt-4 border-t pb-56" id="service"> <!--service wrapper-->
-    <div class="pt-24 pb-12 sm:pb-24">
+    <div class="pt-24 ">
       <h1 class="boldheader">
         <span class="">I can help you with</span> 
       </h1>
-      
     </div>
 
     <!--4 service card below-->
-    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="pt-8 sm:pt-24 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
       <div class="gridcenter"> 
         <img src="dist/img/end-to-end-design.svg"/>
         <header>
@@ -157,13 +155,13 @@
    </div> <!--service end-->
 
    <div class="pt-4 border-t pb-56" id="work"> <!--latest work wrapper-->
-    <div class="pt-24 pb-12 sm:pb-24">
+    <div class="pt-24">
       <h1 class="boldheader">
         <span class="">Latest work</span> 
       </h1>
       
     </div>
-    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="pt-8 sm:pt-24 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
 
       <div class="gridcenter  "> 
         <a class="hover:shadow-lg" href="https://weiweiuxd.webflow.io/case-study-user-onboarding-data-set-up" target="_blank">
@@ -194,13 +192,13 @@
    </div> <!-- work end-->
 
    <div class="pt-4 border-t pb-56" id="collaborate"> <!-- collaborate-->
-    <div class="pt-24 pb-4 md:pb-24">
+    <div class="pt-24">
       <h1 class="boldheader">
-        <span class="">Let's collaborate</span> 
+              <span class="">Let’s collaborate</span> 
       </h1>
     </div>
-    <div>
-      <p class="pb-8">
+    <div class="pt-8">
+      <p class="pb-8 leading-relaxed md: mr-96 ">
         I'm currently not taking full-time roles. <br> 
         But if you have any exciting new projects, or any consulting opportunity, feel free to reach out to me and let's chat!
       </p>
@@ -210,12 +208,12 @@
     </div>
    </div>
    <div class="pt-4 border-t pb-56" id="more"> <!--More contents link wrapper-->
-     <div class="pt-24 pb-4 md:pb-24">
+     <div class="pt-24">
        <h1 class="boldheader">
          <span class="">More</span> 
        </h1>
      </div>
-    <div class="grid sm:grid-cols-4 gap-24"> <!-- three col grid wrapper-->
+    <div class="pt-8 grid sm:grid-cols-4 gap-24"> <!-- three col grid wrapper-->
       <div>
          <div>
            <img src="dist/img/icon-illustration.svg"/>
@@ -259,22 +257,18 @@
         </a>  
       </div>
    </div> 
-     
-  
     </div>
    </div> <!-- Article link end-->
-   
   </main>
-   
-
   </div>
+  <div class="bg-primary-1000 p-0 m-0 h-24 min-h-full"> <!--footer-->
+    <div class="pt-8 px-8 flex justify-center">
+      <p class="text-tertiary text-sm">
+        © 2022 Weiwei - Made with tailwindcss, the accompany of two fluffy cats and plants.
+      </p>
+    </div>
+  </div> <!--footer end-->  
   <script src="dist/index.js"></script>
 </body>
-<div class="bg-primary-1000 p-0"> <!--footer-->
-  <footer class="py-8 px-8 flex justify-center">
-    <p class="text-tertiary text-sm">
-      © 2022 Weiwei - Made with tailwindcss, the accompany of two fluffy cats and plants.
-    </p>
-  </footer>
-</div> <!--footer end-->  
+
 </html>
