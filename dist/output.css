@@ -6,9 +6,16 @@
   /*font-family:'ButlerStencil';
     src: url(./dist/font/ButlerStencil-Bold.woff); */
 
-  font-family:'Butler';
+  font-family:'Butler Stencil';
 
-  src: url(./dist/font/ButlerStencil-Bold.woff);
+  font-style: normal;
+
+  font-weight: normal;
+
+  src: url('./font/ButlerStencil-ExtraBold.woff');
+
+  /*
+    src: local('Butler Stencil ExtraBold'), url('Butler_ExtraBold_Stencil.woff') format('woff'); */
 }
 
 /* ! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com */
@@ -566,12 +573,12 @@ html {
   z-index:0;
 }
 
-.z-30{
-  z-index:30;
-}
-
 .z-40{
   z-index:40;
+}
+
+.z-30{
+  z-index:30;
 }
 
 .my-2{
@@ -852,11 +859,6 @@ html {
   padding-right:1rem;
 }
 
-.px-16{
-  padding-left:4rem;
-  padding-right:4rem;
-}
-
 .px-8{
   padding-left:2rem;
   padding-right:2rem;
@@ -924,7 +926,7 @@ html {
 }
 
 .font-header{
-  font-family:Bulter;
+  font-family:Butler Stencil;
 }
 
 .font-body{
@@ -1104,7 +1106,7 @@ html {
 }
 
 .boldheader{
-  font-family:Bulter;
+  font-family:Butler Stencil;
   font-size:2.25rem;
   line-height:2.5rem;
   font-weight:700;

@@ -46,8 +46,8 @@ module.exports = {
       },
     
       fontFamily:{
-      header: 'Bulter',
-      body:'Plus Jakarta Sans',
+         header: 'Butler Stencil',
+         body:'Plus Jakarta Sans',
       },
 
       backgroundImage:{

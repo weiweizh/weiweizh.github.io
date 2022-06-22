@@ -5,9 +5,14 @@
 @font-face{
     /*font-family:'ButlerStencil';
     src: url(./dist/font/ButlerStencil-Bold.woff); */
-    font-family:'Butler';
-    src: url(./dist/font/ButlerStencil-Bold.woff);
-} 
+    font-family:'Butler Stencil';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./font/ButlerStencil-ExtraBold.woff');
+    /*
+    src: local('Butler Stencil ExtraBold'), url('Butler_ExtraBold_Stencil.woff') format('woff'); */
+}
+
 
 @tailwind base;
 
