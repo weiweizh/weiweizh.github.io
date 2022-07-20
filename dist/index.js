@@ -6,25 +6,18 @@ const articleLinks = document.querySelectorAll('.articleLink')
 
 /*add event Listeners to call track() when each article link is clicked */
 
-/*
+
 articleLinks.forEach(articleLink =>{
-    articleLink.addEventListener('click',function clickLink(event){
+    articleLink.addEventListener('click',function(e){
         analytics.track("article clicked",{
             "type":"article link",
-            "url": this.target.href,
+            "url": e.target.href,
         });  
     });
 
  }
-) */
+) 
 
-articleLinks.forEach(articleLink =>{
-    articleLink.addEventListener('click',analytics.track("article clicked",{
-            "type":"article link",
-            "url": this.target.href,
-        })
-      );  
-    });
 
  
 
