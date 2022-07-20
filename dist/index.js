@@ -7,7 +7,8 @@ const articleLink = document.querySelector('.articleLink')
 /*function to call track() when the article link is clicked */
 articleLink.addEventListener('click',()=>{
     analytics.track("article clicked",{
-        "type":"article link"
+        "type":"article link",
+        "url": this.href
     });  
 });
 
