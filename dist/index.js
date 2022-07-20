@@ -2,6 +2,14 @@ const iconMenu = document.querySelector('#icon-menu');
 const menu = document.querySelector('#menu');
 const navBar = document.querySelector('#nav-bar');
 const menuItems = document.querySelectorAll('#menu li');
+const articleLink = document.querySelector('.articleLink')
+
+/*function to call track() when the article link is clicked */
+articleLink.addEventListener('click',()=>{
+    analytics.track("article clicked",{
+        "type":"article link"
+    });  
+});
 
 
 /*function to show and hide menu on click */
