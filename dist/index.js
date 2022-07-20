@@ -5,10 +5,10 @@ const menuItems = document.querySelectorAll('#menu li');
 const articleLink = document.querySelector('.articleLink')
 
 /*function to call track() when the article link is clicked */
-articleLink.addEventListener('click',()=>{
+articleLink.addEventListener('click',(e)=>{
     analytics.track("article clicked",{
         "type":"article link",
-        "url": this.href
+        "url": e.target.href,
     });  
 });
 
