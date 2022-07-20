@@ -2,15 +2,21 @@ const iconMenu = document.querySelector('#icon-menu');
 const menu = document.querySelector('#menu');
 const navBar = document.querySelector('#nav-bar');
 const menuItems = document.querySelectorAll('#menu li');
-const articleLink = document.querySelector('.articleLink')
+const articleLinks = document.querySelectorAll('.articleLink')
 
-/*function to call track() when the article link is clicked */
-articleLink.addEventListener('click',(e)=>{
-    analytics.track("article clicked",{
-        "type":"article link",
-        "url": e.target.href,
-    });  
-});
+/*add event Listeners to call track() when each article link is clicked */
+
+articleLinks.forEach(artileLink =>{
+    articleLink.addEventListener('click',(e)=>{
+        analytics.track("article clicked",{
+            "type":"article link",
+            "url": e.target.href,
+        });  
+    });
+
+ }
+)
+
 
 
 /*function to show and hide menu on click */
