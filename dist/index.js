@@ -6,7 +6,7 @@ const articleLinks = document.querySelectorAll('.articleLink')
 
 /*add event Listeners to call track() when each article link is clicked */
 
-articleLinks.forEach(artileLink =>{
+articleLinks.forEach(articleLink =>{
     articleLink.addEventListener('click',(e)=>{
         analytics.track("article clicked",{
             "type":"article link",
