@@ -1030,14 +1030,14 @@ html {
           text-decoration-color:#F9ECC6;
 }
 
-.decoration-secondary-teal{
-  -webkit-text-decoration-color:#D5EDE8;
-          text-decoration-color:#D5EDE8;
-}
-
 .decoration-primary-400{
   -webkit-text-decoration-color:#AAACAC;
           text-decoration-color:#AAACAC;
+}
+
+.decoration-secondary-teal{
+  -webkit-text-decoration-color:#D5EDE8;
+          text-decoration-color:#D5EDE8;
 }
 
 .decoration-primary-1000{
@@ -1237,11 +1237,6 @@ html {
 .hover\:text-primary-1000:hover{
   --tw-text-opacity:1;
   color:rgb(58 63 62 / var(--tw-text-opacity));
-}
-
-.hover\:underline:hover{
-  -webkit-text-decoration-line:underline;
-          text-decoration-line:underline;
 }
 
 .hover\:decoration-primary-1000:hover{
