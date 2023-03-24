@@ -47,7 +47,8 @@ module.exports = {
     
       fontFamily:{
          header: 'Butler Stencil',
-         silka: ['silka regular', 'silka bold', 'sans-serif'],
+         silka: 'silka regular',
+         bodyBold: 'silka bold',
          
       },
 

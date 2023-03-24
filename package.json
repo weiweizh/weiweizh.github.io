@@ -1,0 +1,25 @@
+
+
+{
+  "name": "weiweizh.github.io",
+  "version": "1.0.0",
+  "description": "package for portfolio website",
+  "main": "tailwind.config-default-visible.js",
+  "scripts": {
+    "build-css": "npx tailwindcss -i src/input.css -o dist/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weiweizh/weiweizh.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weiweizh/weiweizh.github.io/issues"
+  },
+  "homepage": "https://github.com/weiweizh/weiweizh.github.io#readme",
+  "dependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}

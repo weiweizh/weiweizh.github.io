@@ -1,6 +1,6 @@
 /* import tailwind class, fonts, etc. you need here */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700&display=swap');
+
 
 @font-face{
     /*font-family:'ButlerStencil';
@@ -12,17 +12,31 @@
     /*
     src: local('Butler Stencil ExtraBold'), url('Butler_ExtraBold_Stencil.woff') format('woff'); */
 
-    /*silka: font for body and body highlight */
+    
 
-    font-family:'silka regular';
-    font-style: normal;
-    font-weight: normal;
-    src:url('./font/silka-regular-webfont.woff');
+    
+}
+
+@font-face{
+    /*silka: font for body and body highlight */
+    font-family:'silka regular'; 
+	src: url('./font/silka-regular-webfont.eot?#iefix') format('embedded-opentype'), 
+	     url('./font/silka-regular-webfont.woff') format('woff'),
+	     url('./font/silka-regular-webfont.ttf') format('truetype'),
+	     url('./font/silka-regular-webfont.woff2') format('woff2');
+
+
+    
+
+}
+
+@font-face{
 
     font-family:'silka bold';
-    font-style: bold;
-    font-weight: bold;
-    src: url('./font/silka-bold-webfont.woff');
+    src: url('./font/silka-bold-webfont.woff'),
+         url('./font/silka-regular-webfont.ttf') format('truetype'),
+         url('./font/silka-regular-webfont.woff2') format('woff2');
+
 }
 
 
@@ -35,9 +49,12 @@ html {
 @tailwind components;
 @tailwind utilities;
 
+/*customized style */
 .boldheader{
     @apply text-4xl lg:text-8xl 2xl:text-8xl font-bold font-header underline decoration-secondary-teal;
 }
+
+
 
 .gridcenter{
     @apply grid justify-items-center;
@@ -58,6 +75,8 @@ html {
 .activeM{
     @apply text-primary-1000 underline underline-offset-[4px] decoration-primary-1000 decoration-1;
 }
+
+
 
 @layer utilities{
    .animation-delay-2000{
