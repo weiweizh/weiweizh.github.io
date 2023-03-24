@@ -11,6 +11,18 @@
     src: url('./font/ButlerStencil-ExtraBold.woff');
     /*
     src: local('Butler Stencil ExtraBold'), url('Butler_ExtraBold_Stencil.woff') format('woff'); */
+
+    /*silka: font for body and body highlight */
+
+    font-family:'silka regular';
+    font-style: normal;
+    font-weight: normal;
+    src:url('./font/silka-regular-webfont.woff');
+
+    font-family:'silka bold';
+    font-style: bold;
+    font-weight: bold;
+    src: url('./font/silka-bold-webfont.woff');
 }
 
 
