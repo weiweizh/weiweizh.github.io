@@ -10,7 +10,7 @@
 
   font-weight: normal;
 
-  src: url('./font/ButlerStencil-ExtraBold.woff');
+  src: url('font/ButlerStencil-ExtraBold.woff');
 
   /*
     src: local('Butler Stencil ExtraBold'), url('Butler_ExtraBold_Stencil.woff') format('woff'); */
@@ -21,18 +21,18 @@
 
   font-family:'silka regular';
 
-  src: url('./font/silka-regular-webfont.eot?#iefix') format('embedded-opentype'), 
-	     url('./font/silka-regular-webfont.woff') format('woff'),
-	     url('./font/silka-regular-webfont.ttf') format('truetype'),
-	     url('./font/silka-regular-webfont.woff2') format('woff2');
+  src: url('font/silka-regular-webfont.eot?#iefix') format('embedded-opentype'), 
+	     url('font/silka-regular-webfont.woff') format('woff'),
+	     url('font/silka-regular-webfont.ttf') format('truetype'),
+	     url('font/silka-regular-webfont.woff2') format('woff2');
 }
 
 @font-face{
   font-family:'silka bold';
 
-  src: url('./font/silka-bold-webfont.woff'),
-         url('./font/silka-regular-webfont.ttf') format('truetype'),
-         url('./font/silka-regular-webfont.woff2') format('woff2');
+  src: url('font/silka-bold-webfont.woff'),
+         url('font/silka-regular-webfont.ttf') format('truetype'),
+         url('font/silka-regular-webfont.woff2') format('woff2');
 }
 
 /* ! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com */
