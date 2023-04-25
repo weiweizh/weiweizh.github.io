@@ -3,12 +3,12 @@
 
 
 @font-face{
-    /*font-family:'ButlerStencil';
+    /*font-family:'Larken';
     src: url(./dist/font/ButlerStencil-Bold.woff); */
-    font-family:'Butler Stencil';
+    font-family:'Larken';
     font-style: normal;
     font-weight: normal;
-    src: url('font/ButlerStencil-ExtraBold.woff');
+    src: url('font/Larken-Bold.woff2')format('woff2');
     /*
     src: local('Butler Stencil ExtraBold'), url('Butler_ExtraBold_Stencil.woff') format('woff'); */
 
