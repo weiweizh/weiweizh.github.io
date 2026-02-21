@@ -1,482 +1,369 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Weiwei - UX Designer specializing in user-centered design, research, and data-driven product experiences">
+  <title>Weiwei | UX Designer</title>
   <link href="dist/output.css" rel="stylesheet">
   <link rel="icon" href="dist/img/icon-w-layered.ico" sizes="any">
   <link rel="icon" href="dist/img/icon-w.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="dist/img/icon-w-apple-touch.png">
   <link rel="manifest" href="dist/manifest.webmanifest">
-  <script src="https://kit.fontawesome.com/8c5bfd3ecc.js" crossorigin="anonymous"></script>
-  <script>
-    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="B17mVv1TFRPuBqQVZji5YAHEwa91kubV";;analytics.SNIPPET_VERSION="4.15.3";
-    analytics.load("kS9rWY5YiRnHqNkBGERMYeLYuG16x1pS");
-    analytics.page();
-    analytics.identify();
-    analytics.track();
-    }}();
-  </script>
-
+  <style>
+    @font-face {
+      font-family: 'Larken';
+      src: url('dist/font/Larken-Bold.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    .font-serif { font-family: 'Larken', Georgia, serif; }
+  </style>
 </head>
+<body class="bg-stone-50 text-stone-900 antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-stone-900 focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-stone-400">
+    Skip to main content
+  </a>
 
-
-
-<body class="text-primary-1000 font-silka bg-tertiary mt-2 scroll-smooth">
-  <div> <!--whole body container wrapper-->
-    <div class="sticky top-0 bg-tertiary bg-opacity-90 z-50">
-      <nav class="border-b flex md:justify-between" id="nav-bar"> <!-- fixed header-->
-        <div class="w-full md:w-3/5 px-4 py-2 flex flex-row items-center"> <!-- logo and name-->
-          <div class="mr-1 basis-10">
-            <img src="dist/img/icon-w.svg" alt="w logo"/>
-          </div>
-          <div class="basis-full md:basis-72 flex justify-between text-primary-600">
-            <h1 class="font-silk">
-              Weiwei UXD
-            </h1>
-            <div class="pl-4 pr-0 cursor-pointer md:hidden" id="icon-menu">
-              <svg class="w-6" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </div>
-         </div>  <!--logo and name end-->
-        </div>
-        <div class="w-0 md:w-2/5"> <!--menu wrapper-->
-          <ul class="hidden w-[500px] px-4 md:flex md:space-x-8 md:px-2 py-2 text-left z-50" id="menu">
-            <li class="text-primary-600 py-2">
-              <a href="#about" class="hover:text-primary-1000 transition duration-500">
-                <span>About</span>
-              </a>
-            </li>
-            
-            <li class="text-primary-600 py-2">
-              <a href="#work" class="hover:text-primary-1000 transition ease-out duration-500">
-                <span>Latest work</span>
-              </a>
-            </li>
-            <li class="text-primary-600 py-2">
-              <a href="#more" class="hover:text-primary-1000 transition ease-out duration-500">
-                <span>For fun</span>
-              </a>
-            </li>
-            <li class="text-primary-600 py-2">
-              <a href="#service" class="hover:text-primary-1000 transition ease-out duration-500">
-                <span>Service</span>
-              </a>
-            </li>
-            <li class="text-primary-600 py-2">
-              <a href="#collaborate" class="hover:text-primary-1000 transition ease-out duration-500">
-                <span>Collaborate</span>
-              </a>
-            </li>
-            
-          </ul>
-        </div> <!-- menu wrapper ends-->
-        
-      </nav> <!-- header ends-->
-    </div>
- <main class="px-8 xl:mx-12 2xl:mx-64 z-0">
-   <div class="pb-56 flex flex-col-reverse items-center  lg:flex-row" id="about"> <!--about card wrapper-->
-    <div class="relative basis-2/3 pt-4 lg:pt-56 z-40">
-      <div>
-        <h1 class="boldheader ">
-          <Span class="">Hi, I'm Weiwei</Span> 
-        </h1>        
-      </div>
-      <div class="pt-8 w-full lg:w-4/5 2xl:w-3/5">
-        <p class="font-silka leading-relaxed mr-8 2xl:mr-12">
-          
-            I’m an experienced designer who led diverse teams, from startups to large corporations, through a  <span class="font-bodyBold">user-centered design process</span>. I utilize my expertise in <span class="underline decoration-secondary-yellow  decoration-4">research, strategy, design, and execution</span> to bring their visions to life.
-            
-       </p>
-       <p class="leading-relaxed pt-3 mr-8 2xl:mr-12 ">
-        I am skilled in solving <span class="underline decoration-secondary-yellow decoration-4">complex problems</span> related to data and machine learning models. I provide <span class="font-bodyBold">usable, elegant solutions</span> that effectively address these challenges. 
-       </p>
-
-        <p class="leading-relaxed pt-3 mr-8 2xl:mr-12">
-          Currently working on data models at HubSpot, previously data framework at Twilio Segment, and solving complex logistic problem at Wise Systems. 
-        </p>
-    
-      </div>
+  <header class="sticky top-0 z-40 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 group" aria-label="Weiwei UX Designer - Home">
+        <img src="dist/img/icon-w.svg" alt="" class="w-8 h-8" aria-hidden="true">
+        <span class="font-serif text-lg text-stone-800 group-hover:text-stone-600 transition-colors">Weiwei</span>
+      </a>
       
-      
-    </div>
-    <div class="basis-1/3 "> <!--Hero img wrapper-->
-      <div class="w-11/12 h-11/12 bg-bluredbg bg-contain bg-left bg-no-repeat">
-        <div class="z-0 relative w-full 2xl:max-w-lg ">
-          <div class="absolute top-56 left-0 w-56 h-56 bg-secondary-yellow rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div class="absolute top-28 -right-3 w-72 h-72 bg-secondary-teal rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
-        </div>
-        <div class="z-30 relative w-72 px-8 pt-36 2xl:w-96 ">
-          <img src="dist/img/weiwei.png" alt="weiwei image"/>
-        </div>
+      <nav aria-label="Main navigation">
+        <button 
+          id="menu-toggle"
+          class="md:hidden p-2 text-stone-600 hover:text-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-md"
+          aria-expanded="false"
+          aria-controls="main-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
         
-        
-</div>
-
-    </div>
-   
-   </div> <!--about end-->
-
-   <div class="pt-4 border-t pb-56" id="work"> <!--latest work wrapper-->
-    <div class="pt-24">
-      <h1 class="boldheader">
-        <span class="">Latest work</span> 
-      </h1>    
-    </div>
-
-    
-
-    <div class="pt-8 sm:pt-24 grid sm:grid-cols-2 md:grid-cols-2 gap-14">
-      <div class="border-1 border-slate-200 bg-white rounded-xs  hover:drop-shadow-xl" style="height: fit-content; border-width: 1px; transition-duration: 500ms; transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);">
-        <h2 class="p-5 sm:text-l md:text-2xl">Catalog redesign</h2>
-        <div class="relative px-4 bg-cover bg-local h-64" style="background-image: url(./dist/img/bg-catalog-redesign.png); background-size: box-border; background-repeat: no-repeat;" >
-           
-            <ul class="p-2 list-none flex absolute inset-x-0 bottom-0">
-                <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-                    Design strategy
-                </li>
-                <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-                    Workshop
-                </li>
-                <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-                    Concept design testing
-                </li>
-            </ul>
-        </div>
-        <div class="p-5 h-1/5">
-            <a href="https://tinyurl.com/5cuxav66" target="_blank" class="btn inline-flex items-center">
-              <i class="fa-solid fa-lock w-4 h-4 pr-4"></i>
-              <span>
-               View with passcode
-              </span>
-            </a>
-        </div>
-    </div>
-
-    <div class="border-1 border-slate-200 bg-white rounded-xs  hover:drop-shadow-xl" style="height: fit-content; border-width: 1px; transition-duration: 500ms; transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);">
-      <h2 class="p-5 sm:text-l md:text-2xl">Customer deletion dashboard</h2>
-      <div class="relative px-4 bg-cover bg-local h-64" style="background-image: url(./dist/img/bg-deletion-dashboard.png); background-size: box-border; background-repeat: no-repeat;" >
-         
-          <ul class="p-2 list-none flex absolute inset-x-0 bottom-0">
-              <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-                  Design strategy
-              </li>
-              <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-                  UI/UX design
-              </li>
-
-          </ul>
-      </div>
-      <div class="p-5 h-1/5">
-          <a href="https://tinyurl.com/yxx4skpy" target="_blank" class="btn inline-flex items-center">
-            <i class="fa-solid fa-lock w-4 h-4 pr-4"></i>
-            <span>
-             View with passcode
-            </span>
-          </a>
-      </div>
-  </div>
-
-  <div class="border-1 border-slate-200 bg-white rounded-xs  hover:drop-shadow-xl" style="height: fit-content; border-width: 1px; transition-duration: 500ms; transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);">
-    <h2 class="p-5 sm:text-l md:text-2xl">Destination action mapping updates </h2>
-    <div class="relative px-4 bg-cover bg-local h-64" style="background-image: url(./dist/img/bg-action-mapping.png); background-size: box-border; background-repeat: no-repeat;" >
-       
-        <ul class="p-2 list-none flex absolute inset-x-0 bottom-0">
-            <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-                Design strategy
-            </li>
-            <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-                Concept testing
-            </li>
-            <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-              Technical design
-          </li>
-
+        <ul id="main-menu" class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <li><a href="#about" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">About</a></li>
+          <li><a href="#work" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">Work</a></li>
+          <li><a href="#writing" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">Writing</a></li>
+          <li><a href="#contact" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">Contact</a></li>
         </ul>
+      </nav>
     </div>
-    <div class="p-5 h-1/5">
-        <a href="https://tinyurl.com/5ba84htp" target="_blank" class="btn inline-flex items-center">
-          <i class="fa-solid fa-lock w-4 h-4 pr-4"></i>
-          <span>
-           View with passcode
-          </span>
+    
+    <div id="mobile-menu" class="hidden md:hidden bg-stone-50 border-t border-stone-200">
+      <ul class="px-6 py-4 space-y-4 text-sm font-medium">
+        <li><a href="#about" class="block text-stone-600 hover:text-stone-900 py-2">About</a></li>
+        <li><a href="#work" class="block text-stone-600 hover:text-stone-900 py-2">Work</a></li>
+        <li><a href="#writing" class="block text-stone-600 hover:text-stone-900 py-2">Writing</a></li>
+        <li><a href="#contact" class="block text-stone-600 hover:text-stone-900 py-2">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content" class="max-w-5xl mx-auto px-6">
+    <section id="about" class="min-h-[80vh] flex flex-col justify-center py-20">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-stone-900 leading-tight mb-6">
+            Hi, I'm <span class="italic">Weiwei</span>
+          </h1>
+          <p class="text-lg text-stone-600 leading-relaxed mb-4 max-w-lg">
+            A UX designer with expertise in <strong class="text-stone-900">research, strategy, design, and execution</strong>. I help companies build user-centered products that solve complex problems.
+          </p>
+          <p class="text-lg text-stone-600 leading-relaxed mb-6 max-w-lg">
+            Currently working on data products at HubSpot. Previously at Twilio Segment and Wise Systems.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#work" class="inline-flex items-center gap-2 px-5 py-3 bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2">
+              View my work
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="order-1 md:order-2 flex justify-center">
+          <div class="relative w-64 h-64 md:w-80 md:h-80">
+            <img 
+              src="dist/img/weiwei.png" 
+              alt="Weiwei - UX Designer portrait"
+              class="w-full h-full object-cover rounded-2xl"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="py-20 border-t border-stone-200">
+      <div class="flex items-baseline justify-between mb-12">
+        <h2 class="font-serif text-3xl md:text-4xl text-stone-900">Selected Work</h2>
+        <a href="mailto:weiweizh2017@gmail.com" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 rounded-sm px-1">
+          Request portfolio access
+          <svg class="w-4 h-4 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
         </a>
-    </div>
-</div>
-<div class="border-1 border-slate-200 bg-white rounded-xs  hover:drop-shadow-xl" style="height: fit-content; border-width: 1px; transition-duration: 500ms; transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);">
-  <h2 class="p-5 sm:text-l md:text-2xl">Self-serve onboarding: data set up </h2>
-  <div class="relative px-4 bg-cover bg-local h-64" style="background-image: url(./dist/img/bg-setup-data.png); background-size: box-border; background-repeat: no-repeat;" >
-     
-      <ul class="p-2 list-none flex absolute inset-x-0 bottom-0">
-          <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-              Design strategy
-          </li>
-          <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-              Research
-          </li>
-          <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-            Web UI/UX
-        </li>
+      </div>
 
-      </ul>
-  </div>
-  <div class="p-5 h-1/5">
-      <a href="https://weiweiuxd.webflow.io/case-study-user-onboarding-data-set-up" target="_blank" class="btn inline-flex items-center">
-        <i class="fa-solid fa-lock w-4 h-4 pr-4"></i>
-        <span>
-         View with passcode
-        </span>
-      </a>
-  </div>
-</div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100">
+          <div class="block">
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden">
+              <img src="dist/img/bg-catalog-redesign.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-stone-900 mb-2">Catalog Redesign</h3>
+              <p class="text-stone-600 text-sm mb-4">Design strategy, Workshop, Concept design testing</p>
+              <span class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+                Internal case study
+              </span>
+            </div>
+          </div>
+        </article>
 
-<div class="border-1 border-slate-200 bg-white rounded-xs  hover:drop-shadow-xl" style="height: fit-content; border-width: 1px; transition-duration: 500ms; transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);">
-  <h2 class="p-5 sm:text-l md:text-2xl">Coffee notes: practice pour over coffee </h2>
-  <div class="relative px-4 bg-cover bg-local h-64" style="background-image: url(./dist/img/bg-coffee-notes.png); background-size: box-border; background-repeat: no-repeat;" >
-     
-      <ul class="p-2 list-none flex absolute inset-x-0 bottom-0">
-          <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-              iOS design
-          </li>
-          <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-              side hustle
-          </li>
+        <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100">
+          <div class="block">
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden">
+              <img src="dist/img/bg-deletion-dashboard.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-stone-900 mb-2">Customer Deletion Dashboard</h3>
+              <p class="text-stone-600 text-sm mb-4">Design strategy, UI/UX design</p>
+              <span class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+                Internal case study
+              </span>
+            </div>
+          </div>
+        </article>
 
-      </ul>
-  </div>
-  <div class="p-5 h-1/5">
-      <a href="https://weiweiuxd.webflow.io/coffee-notes" target="_blank" class="btn inline-flex items-center">
-        
-        <span>
-         Visit the website
-        </span>
-      </a>
-  </div>
-</div>
+        <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100">
+          <div class="block">
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden">
+              <img src="dist/img/bg-action-mapping.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-stone-900 mb-2">Destination action mapping updates</h3>
+              <p class="text-stone-600 text-sm mb-4">Design strategy, Concept testing, Technical design</p>
+              <span class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+                Internal case study
+              </span>
+            </div>
+          </div>
+        </article>
 
-<div class="border-1 border-slate-200 bg-white rounded-xs  hover:drop-shadow-xl" style="height: fit-content; border-width: 1px; transition-duration: 500ms; transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);">
-  <h2 class="p-5 sm:text-l md:text-2xl">New Project</h2>
-  <div class="relative px-4 bg-cover bg-local h-64" style="background-image: url(./dist/img/bg-catalog-redesign.png); background-size: box-border; background-repeat: no-repeat;" >
-     
-      <ul class="p-2 list-none flex absolute inset-x-0 bottom-0">
-          <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-              UX Design
-          </li>
-          <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-              Research
-          </li>
-          <li class="px-2 py-1 bg-white text-gray-700 text-xs m-1">
-            Prototyping
-        </li>
+        <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100">
+          <div class="block">
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden">
+              <img src="dist/img/bg-coffee-notes.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-stone-900 mb-2">Coffee Notes</h3>
+              <p class="text-stone-600 text-sm mb-4">iOS design, Side project</p>
+              <span class="inline-flex items-center text-xs text-green-700 bg-green-50 px-2 py-1 rounded">Live project</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      </div>
 
-    </ul>
-  </div>
-  <div class="p-5 h-1/5">
-      <a href="#" target="_blank" class="btn inline-flex items-center">
-        
-        <span>
-         View project
-        </span>
-      </a>
-  </div>
-</div>
+      <div class="mt-12 p-8 bg-stone-100 rounded-xl">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-lg font-semibold text-stone-900 mb-1">More case studies available</h3>
+            <p class="text-stone-600 text-sm">I have additional projects I'd be happy to share upon request.</p>
+          </div>
+          <a href="mailto:weiweizh2017@gmail.com" class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 whitespace-nowrap">
+            Request access
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-20 border-t border-stone-200">
+      <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-12">What I do</h2>
       
-    </div>
-   </div> <!-- work end-->
-
-   <div class="pt-4 border-t pb-56" id="more"> <!--More contents link wrapper-->
-    <div class="pt-24">
-      <h1 class="boldheader">
-        <span class="">For fun</span> 
-      </h1>
-    </div>
-   <div class="pt-8 grid sm:grid-cols-4 gap-24"> <!-- three col grid wrapper-->
-     <div>
-        <div>
-          <img src="dist/img/icon-illustration.svg"/>
-          <p class="title-2 pt-4">Illustrations</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors">
+          <div class="flex justify-center mb-4">
+            <img src="dist/img/end-to-end-design.svg" alt="" class="w-18 h-18">
+          </div>
+          <h3 class="font-semibold text-stone-900 mb-2">End-to-end Design</h3>
+          <p class="text-stone-600 text-sm">From discovery to delivery, I craft cohesive product experiences.</p>
         </div>
-        <div class="pt-6">
-          <a href="https://dribbble.com/wwz" alt="link to illustrations" target="_blank">
-           <img src="dist/img/24-Hedgehog.png" />
-          </a>  
+
+        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors">
+          <div class="flex justify-center mb-4">
+            <img src="dist/img/User-research.svg" alt="" class="w-18 h-18">
+          </div>
+          <h3 class="font-semibold text-stone-900 mb-2">User Research</h3>
+          <p class="text-stone-600 text-sm">Understanding users through interviews, surveys, and usability studies.</p>
         </div>
-     </div>
 
-     <div class="sm:col-span-2">
-       <div class="pb-4">
-         <img src="dist/img/icon-article.svg"/>
-         <p class="title-2 pt-4">Articles</p>
-       </div>
-       <div class="pt-2">
-         <div class="flex flex-row">
-           <a class="articleLink underline decoration-primary-400 pr-1 hover:decoration-primary-1000" href="https://weiweiux.notion.site/CLIs-could-be-more-user-friendly-22080bcdf95b4f6fb7f44f78979014f0" alt="link to the article" target="_blank">
-          
-             CLIs could be more user friendly
-           </a>
-           <a href="https://weiweiux.notion.site/CLIs-could-be-more-user-friendly-22080bcdf95b4f6fb7f44f78979014f0" alt="" target="_blank">
-             <img src="dist/img/icon-external.svg" alt="icon to show it's an external link"/>
-           </a>
-           
-         </div>
+        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors">
+          <div class="flex justify-center mb-4">
+            <img src="dist/img/usability-testing.svg" alt="" class="w-18 h-18">
+          </div>
+          <h3 class="font-semibold text-stone-900 mb-2">Usability Testing</h3>
+          <p class="text-stone-600 text-sm">Validating designs with real users to ensure intuitive experiences.</p>
+        </div>
 
-         <p class="pt-1 text-xs text-primary-600">
-           04/07/2023
-         </p>
-       </div>
-
-       <div class="pt-2">
-         <div class="flex flex-row">
-           <a class="articleLink underline decoration-primary-400 pr-1 hover:decoration-primary-1000" href="https://weiweiux.notion.site/Chat-gpt-with-better-UX-bd00b081fcde44da9bd741816b159ec8" alt="link to the article" target="_blank">
-          
-             A Chat-GPT with better user experience
-           </a>
-           <a href="https://weiweiux.notion.site/Chat-gpt-with-better-UX-bd00b081fcde44da9bd741816b159ec8" alt="" target="_blank">
-             <img src="dist/img/icon-external.svg" alt="link to article of how to make chat-gpt more user friendly"/>
-           </a>
-           
-         </div>
-
-         <p class="pt-1 text-xs text-primary-600">
-           03/12/2023
-         </p>
-       </div>
-
-       <div class="pt-2">
-         <div class="flex flex-row">
-           <a class="articleLink underline decoration-primary-400 pr-1 hover:decoration-primary-1000" href="https://weiweiux.notion.site/How-to-use-tailwindCSS-to-build-your-portfolio-website-604a3a62e1ff4f378653b2eb66e63b31" alt="link to the article" target="_blank">
-          
-             How to use tailwindCSS to build your portfolio website
-           </a>
-           <a href="https://weiweiux.notion.site/How-to-use-tailwindCSS-to-build-your-portfolio-website-604a3a62e1ff4f378653b2eb66e63b31" alt="" target="_blank">
-             <img src="dist/img/icon-external.svg" alt="link to open the article: how to use tailwindCss in a blank page"/>
-           </a>
-           
-         </div>
-
-         <p class="pt-1 text-xs text-primary-600">
-           06/26/2022
-         </p>
-       </div>
-       <div class="pt-2">
-         <div class="flex flex-row">
-           <a class="articleLink underline decoration-primary-400 pr-1 hover:decoration-primary-1000" href="https://weiweiux.notion.site/The-best-cookie-setting-window-treats-you-like-a-significant-other-feb422bc50d743fea432c976564200a5" alt="link to illustrations" target="_blank">
-          
-             Best cookie setting treats you like a significant other
-           </a>
-           <a href="https://weiweiux.notion.site/The-best-cookie-setting-window-treats-you-like-a-significant-other-feb422bc50d743fea432c976564200a5" target="_blank">
-             <img src="dist/img/icon-external.svg" alt="link to open the article: the best cookie setting treats you like a significant other in a blank page/>
-           </a>
-           
-         </div>
-
-         <p class="pt-1 text-xs text-primary-600">
-           04/17/2022
-         </p>
-       </div>
-       
-    </div>
-
-    <div>
-     <div>
-       <img src="dist/img/icon-contact.svg"/>
-       <p class="title-2 pt-4">Contact</p>
-     </div>
-     <div class="pt-6">
-       <a target="_blank" href="mailto:weiweiuxd@gmail.com" >
-        weiweiuxd@gmail.com
-       </a>  
-     </div>
-  </div> 
-   </div>
-  </div> <!-- Article link end-->
-
-   <div class="pt-4 border-t pb-56" id="service"> <!--service wrapper-->
-    <div class="pt-24 ">
-      <h1 class="boldheader">
-        <span class="">I can help you with</span> 
-      </h1>
-    </div>
-
-    <!--4 service card below-->
-    <div class="pt-8 sm:pt-24 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="gridcenter"> 
-        <img src="dist/img/end-to-end-design.svg"/>
-        <header>
-          <span class="">
-            End-to-end Design
-          </span>
-        </header>
+        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors">
+          <div class="flex justify-center mb-4">
+            <img src="dist/img/UXevaluation.svg" alt="" class="w-18 h-18">
+          </div>
+          <h3 class="font-semibold text-stone-900 mb-2">UX Evaluation</h3>
+          <p class="text-stone-600 text-sm">Auditing existing products and identifying improvement opportunities.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="gridcenter">
-        <img src="dist/img/User-research.svg"/>
-        <header>
-          <span class="">
-            User Research
-          </span>
-        </header>
+    <section id="writing" class="py-20 border-t border-stone-200">
+      <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-12">Writing</h2>
+      
+      <div class="space-y-6">
+        <article class="group">
+          <a href="https://weiweiux.notion.site/CLIs-could-be-more-user-friendly-22080bcdf95b4f6fb7f44f78979014f0" target="_blank" rel="noopener noreferrer" class="block">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors">
+                  CLIs could be more user friendly
+                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </h3>
+                <p class="text-stone-500 text-sm mt-1">April 7, 2023</p>
+              </div>
+              <span class="text-stone-400 shrink-0" aria-hidden="true">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <article class="group">
+          <a href="https://weiweiux.notion.site/Chat-gpt-with-better-UX-bd00b081fcde44da9bd741816b159ec8" target="_blank" rel="noopener noreferrer" class="block">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors">
+                  A Chat-GPT with better user experience
+                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </h3>
+                <p class="text-stone-500 text-sm mt-1">March 12, 2023</p>
+              </div>
+              <span class="text-stone-400 shrink-0" aria-hidden="true">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </article>
+
+        <article class="group">
+          <a href="https://weiweiux.notion.site/How-to-use-tailwindCSS-to-build-your-portfolio-website-604a3a62e1ff4f378653b2eb66e63b31" target="_blank" rel="noopener noreferrer" class="block">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors">
+                  How to use TailwindCSS to build your portfolio website
+                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </h3>
+                <p class="text-stone-500 text-sm mt-1">June 26, 2022</p>
+              </div>
+              <span class="text-stone-400 shrink-0" aria-hidden="true">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </div>
+          </a>
+        </article>
       </div>
+    </section>
 
-      <div class="gridcenter">
-        <img src="dist/img/usability-testing.svg"/>
-        <header>
-          <span class="">
-            Usability Testing
-          </span>
-        </header>
+    <section id="contact" class="py-20 border-t border-stone-200">
+      <div class="max-w-2xl">
+        <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-6">Let's work together</h2>
+        <p class="text-lg text-stone-600 leading-relaxed mb-8">
+          I'm currently exploring new opportunities in data analytics, ML, and developer tooling. 
+          If you have open roles or want to collaborate, I'd love to hear from you.
+        </p>
+        <a href="mailto:weiweizh2017@gmail.com" class="inline-flex items-center gap-2 px-6 py-4 bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          </svg>
+          Send me an email
+        </a>
+        
+        <div class="mt-12 flex gap-6">
+          <a href="https://dribbble.com/wwz" target="_blank" rel="noopener noreferrer" class="text-stone-500 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 rounded-md p-1" aria-label="Dribbble (opens in new tab)">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/weiwei-zh/" target="_blank" rel="noopener noreferrer" class="text-stone-500 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 rounded-md p-1" aria-label="LinkedIn (opens in new tab)">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+            </svg>
+          </a>
+        </div>
       </div>
-
-      <div class="grid justify-items-center">
-        <img src="dist/img/UXevaluation.svg"/>
-        <header>
-          <span class="">
-            UX Evaluation
-          </span>
-        </header>
-      </div>
-    </div>
-    
-
-   </div> <!--service end-->
-
-   
-
-   
-
-   <div class="pt-4 border-t pb-56" id="collaborate"> <!-- collaborate-->
-    <div class="pt-24">
-      <h1 class="boldheader">
-              <span class="">Let’s collaborate</span> 
-      </h1>
-    </div>
-    <div class="pt-8">
-      <p class="pb-8 mr-1 first-letter:leading-relaxed lg:mr-96 ">
-        I'm currently exploring new opportunities, particularly in data analytics, ML, and developer tooling areas. <br> 
-        If you have any open roles, feel free to reach out to me for resume and portfolio passcode, and let's chat!
-      </p>
-      <a target="_blank" href="mailto:weiweizh2017@gmail.com" class="btn">
-        Send me an email
-      </a>
-    </div>
-   </div> <!--collaborate end-->
-  
+    </section>
   </main>
-  </div>
-  <div class="bg-primary-1000 p-0 m-0 h-24 min-h-full"> <!--footer-->
-    <div class="pt-8 px-8 flex justify-center">
-      <p class="text-tertiary text-sm">
-        © 2023 Weiwei - Made with tailwindcss, and the accompany of two fluffy cats and plants.
-      </p>
-    </div>
-  </div> <!--footer end-->  
-  <script src="dist/index.js"></script>
-</body>
-<footer>
-  <script>
-    
-  </script>
-</footer>
 
+  <footer class="bg-stone-900 text-stone-400 py-12 mt-20">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm">© 2024 Weiwei</p>
+        <p class="text-sm">Designed with care, built with Tailwind CSS</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (prefersReducedMotion.matches) {
+      document.documentElement.style.scrollBehavior = 'auto';
+    }
+  </script>
+</body>
 </html>
