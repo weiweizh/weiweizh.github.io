@@ -1,91 +1,30 @@
-/* import tailwind class, fonts, etc. you need here */
-
-
-
-@font-face{
-    /*font-family:'Larken';
-    src: url(./dist/font/ButlerStencil-Bold.woff); */
-    font-family:'Larken';
-    font-style: normal;
-    font-weight: normal;
-    src: url('font/Larken-Bold.woff2')format('woff2');
-    /*
-    src: local('Butler Stencil ExtraBold'), url('Butler_ExtraBold_Stencil.woff') format('woff'); */
-
-    
-
-    
-}
-
-@font-face{
-    /*silka: font for body and body highlight */
-    font-family:'silka regular'; 
-	src: url('font/silka-regular-webfont.eot?#iefix') format('embedded-opentype'), 
-	     url('font/silka-regular-webfont.woff') format('woff'),
-	     url('font/silka-regular-webfont.ttf') format('truetype'),
-	     url('font/silka-regular-webfont.woff2') format('woff2');
-
-
-    
-
-}
-
-@font-face{
-
-    font-family:'silka bold';
-    src: url('font/silka-bold-webfont.woff'),
-         url('font/silka-regular-webfont.ttf') format('truetype'),
-         url('font/silka-regular-webfont.woff2') format('woff2');
-
-}
-
-
 @tailwind base;
-
-html {
-  scroll-behavior: smooth;
-}
-
 @tailwind components;
 @tailwind utilities;
 
-/*customized style */
-.boldheader{
-    @apply text-4xl lg:text-8xl 2xl:text-8xl font-bold font-header underline decoration-secondary-teal;
+@font-face {
+  font-family: 'Larken';
+  src: url('dist/font/Larken-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
-
-
-.gridcenter{
-    @apply grid justify-items-center;
+@layer base {
+  :focus-visible {
+    outline: 2px solid #78716c;
+    outline-offset: 2px;
+  }
+  
+  .font-serif {
+    font-family: 'Larken', 'Playfair Display', Georgia, serif;
+  }
 }
 
-.btn{
-    @apply text-primary-600 rounded-md py-2 px-3 text-sm cursor-pointer tracking-wider border hover:text-primary-1000 transition ease-out duration-500;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
-.title-2{
-    @apply uppercase text-primary-600;
-}
-
-.active{
-   @apply text-primary-1000 underline underline-offset-[21px] decoration-primary-1000 decoration-1;
-}
-
-.activeM{
-    @apply text-primary-1000 underline underline-offset-[4px] decoration-primary-1000 decoration-1;
-}
-
-
-
-@layer utilities{
-   .animation-delay-2000{
-      animation-delay: 2s;
-      }
-
-    .animation-delay-4000{
-      animation-delay: 4s;
-    
-    }
-}
-
