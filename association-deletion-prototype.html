@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Association Deletion Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-app: #f5f6f8;
+      --bg-sidebar: #ffffff;
+      --bg-canvas: #e8eaed;
+      --bg-table: #ffffff;
+      --border: #e1e4e8;
+      --text-primary: #1f2328;
+      --text-secondary: #65676e;
+      --text-muted: #b0b3b8;
+      --accent-blue: #0066cc;
+      --accent-blue-light: #e6f0fa;
+      --accent-blue-dark: #0052a3;
+      --accent-orange: #e9730c;
+      --accent-orange-light: #fef3e6;
+      --accent-gray: #65676e;
+      --accent-gray-light: #f0f1f2;
+      --accent-red: #dc2626;
+      --accent-red-light: #fef2f2;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 10px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-app);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 248px 1fr 296px;
+      height: 100vh;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 48px;
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 100;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      text-decoration: none;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-gray-light);
+      color: var(--text-primary);
+    }
+
+    .back-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .header-divider {
+      width: 1px;
+      height: 16px;
+      background: var(--border);
+    }
+
+    .header-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-secondary {
+      background: var(--bg-sidebar);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-gray-light);
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-blue-dark);
+    }
+
+    .btn svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .sidebar {
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      padding: 58px 12px 16px;
+      overflow-y: auto;
+    }
+
+    .sidebar-section {
+      margin-bottom: 16px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      padding-left: 2px;
+    }
+
+    .model-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .model-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding-left: 2px;
+    }
+
+    .section-action {
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .section-action:hover {
+      background: var(--accent-gray-light);
+      color: var(--text-primary);
+    }
+
+    .tables-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .table-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      background: transparent;
+      border: none;
+      border-left: 3px solid transparent;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+
+    .table-item:hover {
+      background: var(--accent-gray-light);
+    }
+
+    .table-item.active {
+      background: var(--accent-blue-light);
+      border-left-color: var(--accent-blue);
+    }
+
+    .table-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .table-icon.blue {
+      background: var(--accent-blue-light);
+      color: var(--accent-blue);
+    }
+
+    .table-icon.orange {
+      background: var(--accent-orange-light);
+      color: var(--accent-orange);
+    }
+
+    .table-icon.gray {
+      background: var(--accent-gray-light);
+      color: var(--accent-gray);
+    }
+
+    .table-icon svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .table-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .table-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .table-fields-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .table-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: var(--accent-gray-light);
+      color: var(--text-secondary);
+    }
+
+    .canvas {
+      background: var(--bg-canvas);
+      padding: 58px 16px 16px;
+      position: relative;
+      overflow: auto;
+    }
+
+    .canvas-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .canvas-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .canvas-delete {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px 6px;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+    }
+
+    .canvas-delete:hover {
+      background: var(--accent-red-light);
+      color: var(--accent-red);
+    }
+
+    .canvas-delete svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .canvas-area {
+      background: var(--bg-sidebar);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      min-height: 440px;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .diagram {
+      position: absolute;
+      inset: 24px;
+    }
+
+    .canvas-table {
+      position: absolute;
+      background: var(--bg-table);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      min-width: 188px;
+      overflow: hidden;
+      transition: box-shadow 0.2s ease;
+      cursor: move;
+    }
+
+    .canvas-table:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .canvas-table.selected {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 2px var(--accent-blue-light), var(--shadow-lg);
+    }
+
+    .canvas-table-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .canvas-table-header.blue { background: var(--accent-blue-light); }
+    .canvas-table-header.orange { background: var(--accent-orange-light); }
+    .canvas-table-header.gray { background: var(--accent-gray-light); }
+
+    .canvas-table-icon {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .canvas-table-icon.blue { background: var(--accent-blue); color: white; }
+    .canvas-table-icon.orange { background: var(--accent-orange); color: white; }
+    .canvas-table-icon.gray { background: var(--accent-gray); color: white; }
+
+    .canvas-table-icon svg {
+      width: 9px;
+      height: 9px;
+    }
+
+    .canvas-table-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .canvas-table-fields {
+      padding: 2px 0;
+    }
+
+    .canvas-table-field {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      transition: background 0.1s ease;
+    }
+
+    .canvas-table-field:hover {
+      background: var(--accent-gray-light);
+    }
+
+    .field-key {
+      width: 11px;
+      height: 11px;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .field-name {
+      flex: 1;
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 12px;
+    }
+
+    .field-type {
+      font-size: 9px;
+      font-weight: 500;
+      padding: 2px 5px;
+      border-radius: 3px;
+      background: var(--accent-gray-light);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .relationships {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .relationship-line {
+      stroke: var(--accent-gray);
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 4, 3;
+    }
+
+    .right-sidebar {
+      background: var(--bg-sidebar);
+      border-left: 1px solid var(--border);
+      padding: 58px 12px 16px;
+      overflow-y: auto;
+    }
+
+    .right-sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+
+    .right-sidebar-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .right-sidebar-icon.blue { background: var(--accent-blue-light); color: var(--accent-blue); }
+    .right-sidebar-icon.orange { background: var(--accent-orange-light); color: var(--accent-orange); }
+    .right-sidebar-icon.gray { background: var(--accent-gray-light); color: var(--accent-gray); }
+
+    .right-sidebar-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .right-sidebar-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .right-sidebar-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .fields-section {
+      margin-bottom: 14px;
+    }
+
+    .fields-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .fields-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .add-field-btn {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent-blue);
+      cursor: pointer;
+      padding: 3px 5px;
+      border-radius: var(--radius-sm);
+      transition: all 0.15s ease;
+    }
+
+    .add-field-btn:hover {
+      background: var(--accent-blue-light);
+    }
+
+    .add-field-btn svg {
+      width: 11px;
+      height: 11px;
+    }
+
+    .fields-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .field-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 6px;
+      background: var(--accent-gray-light);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+
+    .field-row:hover {
+      background: #e8eaed;
+    }
+
+    .field-row.key {
+      background: var(--accent-blue-light);
+    }
+
+    .field-row.key:hover {
+      background: #d6e8fa;
+    }
+
+    .field-key-icon {
+      width: 13px;
+      height: 13px;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+    }
+
+    .field-details {
+      flex: 1;
+    }
+
+    .field-row-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .field-row-type {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .field-row-actions {
+      display: flex;
+      gap: 2px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .field-row:hover .field-row-actions {
+      opacity: 1;
+    }
+
+    .field-action {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+
+    .field-action:hover {
+      background: var(--bg-sidebar);
+      color: var(--text-primary);
+    }
+
+    .field-action.delete:hover {
+      background: var(--accent-red-light);
+      color: var(--accent-red);
+    }
+
+    .field-action svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .association-section {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .association-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .association-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .association-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .association-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px;
+      background: var(--accent-gray-light);
+      border-radius: var(--radius-sm);
+      transition: all 0.12s ease;
+    }
+
+    .association-item:hover {
+      background: #e8eaed;
+    }
+
+    .association-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .association-icon.orange {
+      background: var(--accent-orange-light);
+      color: var(--accent-orange);
+    }
+
+    .association-icon.gray {
+      background: var(--accent-gray-light);
+      color: var(--accent-gray);
+    }
+
+    .association-icon svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .association-info {
+      flex: 1;
+    }
+
+    .association-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .association-type {
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    .association-actions {
+      display: flex;
+      gap: 2px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    .association-item:hover .association-actions {
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .sidebar-section {
+      animation: fadeIn 0.3s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+    }
+
+    .sidebar-section:nth-child(1) { animation-delay: 0.05s; }
+    .sidebar-section:nth-child(2) { animation-delay: 0.1s; }
+
+    .canvas-table {
+      animation: scaleIn 0.25s cubic-bezier(0.25, 1, 0.5, 1) backwards;
+    }
+
+    .canvas-table:nth-child(1) { animation-delay: 0.12s; }
+    .canvas-table:nth-child(2) { animation-delay: 0.17s; }
+    .canvas-table:nth-child(3) { animation-delay: 0.22s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sidebar-section,
+      .canvas-table {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <a href="index.html" class="back-btn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <div class="header-divider"></div>
+      <span class="header-title">Data Model Builder</span>
+    </div>
+    <div class="header-right">
+      <button class="btn btn-secondary">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        </svg>
+        Preview
+      </button>
+      <button class="btn btn-primary">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        Save Changes
+      </button>
+    </div>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="section-label">Model</div>
+        <div class="model-name">Customer Orders</div>
+        <div class="model-desc">Track customer orders and order details across multiple channels</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-header">
+          <span class="section-title">Tables</span>
+          <div class="section-action">+</div>
+        </div>
+        <div class="tables-list">
+          <div class="table-item active" data-table="customer_orders" data-color="blue">
+            <div class="table-icon blue">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="table-info">
+              <div class="table-name">customer_orders</div>
+              <div class="table-fields-count">6 fields</div>
+            </div>
+            <span class="table-badge">6</span>
+          </div>
+          <div class="table-item" data-table="order_items" data-color="orange">
+            <div class="table-icon orange">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="table-info">
+              <div class="table-name">order_items</div>
+              <div class="table-fields-count">4 fields</div>
+            </div>
+            <span class="table-badge">4</span>
+          </div>
+          <div class="table-item" data-table="products" data-color="gray">
+            <div class="table-icon gray">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="table-info">
+              <div class="table-name">products</div>
+              <div class="table-fields-count">4 fields</div>
+            </div>
+            <span class="table-badge">4</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="canvas">
+      <div class="canvas-header">
+        <span class="canvas-title">Untitled Canvas</span>
+        <div class="canvas-delete">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+          </svg>
+          Delete Canvas
+        </div>
+      </div>
+      <div class="canvas-area">
+        <svg class="relationships" id="relationships"></svg>
+        <div class="diagram">
+          <div class="canvas-table selected" id="table-customer_orders" style="left: 24px; top: 24px;" data-color="blue">
+            <div class="canvas-table-header blue">
+              <div class="canvas-table-icon blue">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <span class="canvas-table-title">customer_orders</span>
+            </div>
+            <div class="canvas-table-fields">
+              <div class="canvas-table-field">
+                <svg class="field-key" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M7.5 21.75l-2.25-6.75a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l3 9a1.5 1.5 0 01-1.875 1.875h-12a1.5 1.5 0 01-1.875-1.875l3-9a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l-2.25 6.75"/>
+                </svg>
+                <span class="field-name">order_id</span>
+                <span class="field-type">text</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">customer_id</span>
+                <span class="field-type">text</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">order_date</span>
+                <span class="field-type">date</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">status</span>
+                <span class="field-type">text</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">total_amount</span>
+                <span class="field-type">currency</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">shipping_address</span>
+                <span class="field-type">text</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="canvas-table" id="table-order_items" style="left: 240px; top: 90px;" data-color="orange">
+            <div class="canvas-table-header orange">
+              <div class="canvas-table-icon orange">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <span class="canvas-table-title">order_items</span>
+            </div>
+            <div class="canvas-table-fields">
+              <div class="canvas-table-field">
+                <svg class="field-key" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M7.5 21.75l-2.25-6.75a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l3 9a1.5 1.5 0 01-1.875 1.875h-12a1.5 1.5 0 01-1.875-1.875l3-9a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l-2.25 6.75"/>
+                </svg>
+                <span class="field-name">item_id</span>
+                <span class="field-type">text</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">order_id</span>
+                <span class="field-type">text</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">product_id</span>
+                <span class="field-type">text</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">quantity</span>
+                <span class="field-type">number</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="canvas-table" id="table-products" style="left: 420px; top: 24px;" data-color="gray">
+            <div class="canvas-table-header gray">
+              <div class="canvas-table-icon gray">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+              </div>
+              <span class="canvas-table-title">products</span>
+            </div>
+            <div class="canvas-table-fields">
+              <div class="canvas-table-field">
+                <svg class="field-key" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M7.5 21.75l-2.25-6.75a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l3 9a1.5 1.5 0 01-1.875 1.875h-12a1.5 1.5 0 01-1.875-1.875l3-9a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l-2.25 6.75"/>
+                </svg>
+                <span class="field-name">product_id</span>
+                <span class="field-type">text</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">name</span>
+                <span class="field-type">text</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">price</span>
+                <span class="field-type">currency</span>
+              </div>
+              <div class="canvas-table-field">
+                <span class="field-name">category</span>
+                <span class="field-type">text</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="right-sidebar">
+      <div class="right-sidebar-header">
+        <div class="right-sidebar-icon blue" id="right-sidebar-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="right-sidebar-title" id="right-sidebar-title">customer_orders</div>
+          <div class="right-sidebar-subtitle">Table Details</div>
+        </div>
+      </div>
+
+      <div class="fields-section">
+        <div class="fields-header">
+          <span class="fields-title">Fields</span>
+          <div class="add-field-btn">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Add Field
+          </div>
+        </div>
+        <div class="fields-list" id="fields-list">
+          <div class="field-row key">
+            <svg class="field-key-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7.5 21.75l-2.25-6.75a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l3 9a1.5 1.5 0 01-1.875 1.875h-12a1.5 1.5 0 01-1.875-1.875l3-9a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l-2.25 6.75"/>
+            </svg>
+            <div class="field-details">
+              <div class="field-row-name">order_id</div>
+              <div class="field-row-type">text</div>
+            </div>
+            <div class="field-row-actions">
+              <div class="field-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                </svg>
+              </div>
+              <div class="field-action delete">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-details">
+              <div class="field-row-name">customer_id</div>
+              <div class="field-row-type">text</div>
+            </div>
+            <div class="field-row-actions">
+              <div class="field-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                </svg>
+              </div>
+              <div class="field-action delete">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-details">
+              <div class="field-row-name">order_date</div>
+              <div class="field-row-type">date</div>
+            </div>
+            <div class="field-row-actions">
+              <div class="field-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                </svg>
+              </div>
+              <div class="field-action delete">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-details">
+              <div class="field-row-name">status</div>
+              <div class="field-row-type">text</div>
+            </div>
+            <div class="field-row-actions">
+              <div class="field-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                </svg>
+              </div>
+              <div class="field-action delete">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-details">
+              <div class="field-row-name">total_amount</div>
+              <div class="field-row-type">currency</div>
+            </div>
+            <div class="field-row-actions">
+              <div class="field-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                </svg>
+              </div>
+              <div class="field-action delete">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-details">
+              <div class="field-row-name">shipping_address</div>
+              <div class="field-row-type">text</div>
+            </div>
+            <div class="field-row-actions">
+              <div class="field-action">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                </svg>
+              </div>
+              <div class="field-action delete">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="association-section">
+        <div class="association-header">
+          <span class="association-title">Associations</span>
+        </div>
+        <div class="association-list" id="association-list">
+          <div class="association-item">
+            <div class="association-icon orange">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+              </svg>
+            </div>
+            <div class="association-info">
+              <div class="association-name">order_items</div>
+              <div class="association-type">One-to-Many</div>
+            </div>
+            <div class="association-actions">
+              <div class="field-action delete">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const tableData = {
+      customer_orders: {
+        color: 'blue',
+        fields: [
+          { name: 'order_id', type: 'text', isKey: true },
+          { name: 'customer_id', type: 'text', isKey: false },
+          { name: 'order_date', type: 'date', isKey: false },
+          { name: 'status', type: 'text', isKey: false },
+          { name: 'total_amount', type: 'currency', isKey: false },
+          { name: 'shipping_address', type: 'text', isKey: false }
+        ],
+        associations: [
+          { name: 'order_items', type: 'One-to-Many', color: 'orange' }
+        ]
+      },
+      order_items: {
+        color: 'orange',
+        fields: [
+          { name: 'item_id', type: 'text', isKey: true },
+          { name: 'order_id', type: 'text', isKey: false },
+          { name: 'product_id', type: 'text', isKey: false },
+          { name: 'quantity', type: 'number', isKey: false }
+        ],
+        associations: []
+      },
+      products: {
+        color: 'gray',
+        fields: [
+          { name: 'product_id', type: 'text', isKey: true },
+          { name: 'name', type: 'text', isKey: false },
+          { name: 'price', type: 'currency', isKey: false },
+          { name: 'category', type: 'text', isKey: false }
+        ],
+        associations: []
+      }
+    };
+
+    function selectTable(tableName) {
+      document.querySelectorAll('.table-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.table === tableName);
+      });
+
+      document.querySelectorAll('.canvas-table').forEach(table => {
+        table.classList.toggle('selected', table.id === `table-${tableName}`);
+      });
+
+      const data = tableData[tableName];
+      const rightSidebarIcon = document.getElementById('right-sidebar-icon');
+      const rightSidebarTitle = document.getElementById('right-sidebar-title');
+      const fieldsList = document.getElementById('fields-list');
+      const associationList = document.getElementById('association-list');
+
+      rightSidebarIcon.className = `right-sidebar-icon ${data.color}`;
+      rightSidebarTitle.textContent = tableName;
+
+      fieldsList.innerHTML = data.fields.map(field => `
+        <div class="field-row ${field.isKey ? 'key' : ''}">
+          ${field.isKey ? `
+            <svg class="field-key-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M7.5 21.75l-2.25-6.75a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l3 9a1.5 1.5 0 01-1.875 1.875h-12a1.5 1.5 0 01-1.875-1.875l3-9a1.5 1.5 0 01.75-1.875 1.5 1.5 0 011.875.75l-2.25 6.75"/>
+            </svg>
+          ` : ''}
+          <div class="field-details">
+            <div class="field-row-name">${field.name}</div>
+            <div class="field-row-type">${field.type}</div>
+          </div>
+          <div class="field-row-actions">
+            <div class="field-action">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+              </svg>
+            </div>
+            <div class="field-action delete">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      associationList.innerHTML = data.associations.length > 0 ? data.associations.map(assoc => `
+        <div class="association-item">
+          <div class="association-icon ${assoc.color}">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
+            </svg>
+          </div>
+          <div class="association-info">
+            <div class="association-name">${assoc.name}</div>
+            <div class="association-type">${assoc.type}</div>
+          </div>
+          <div class="association-actions">
+            <div class="field-action delete">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      `).join('') : '<div class="association-item" style="opacity: 0.5; cursor: default;"><div class="association-info"><div class="association-name">No associations</div></div></div>';
+    }
+
+    document.querySelectorAll('.table-item').forEach(item => {
+      item.addEventListener('click', () => {
+        selectTable(item.dataset.table);
+      });
+    });
+
+    document.querySelectorAll('.canvas-table').forEach(table => {
+      table.addEventListener('click', () => {
+        selectTable(table.id.replace('table-', ''));
+      });
+    });
+
+    drawRelationships();
+
+    function drawRelationships() {
+      const svg = document.getElementById('relationships');
+      const customerOrders = document.getElementById('table-customer_orders');
+      const orderItems = document.getElementById('table-order_items');
+      const products = document.getElementById('table-products');
+      const canvasArea = document.querySelector('.canvas-area');
+
+      function getPos(el) {
+        const rect = el.getBoundingClientRect();
+        const canvasRect = canvasArea.getBoundingClientRect();
+        return {
+          x: rect.left - canvasRect.left + rect.width / 2,
+          y: rect.top - canvasRect.top + rect.height / 2
+        };
+      }
+
+      const co = getPos(customerOrders);
+      const oi = getPos(orderItems);
+      const pr = getPos(products);
+
+      const path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const cp1x = co.x + 30;
+      path1.setAttribute('d', `M ${co.x + 85} ${co.y} C ${cp1x} ${co.y}, ${cp1x} ${oi.y}, ${oi.x - 90} ${oi.y}`);
+      path1.setAttribute('class', 'relationship-line');
+      svg.appendChild(path1);
+
+      const dot1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot1.setAttribute('cx', oi.x - 90);
+      dot1.setAttribute('cy', oi.y);
+      dot1.setAttribute('r', 4);
+      dot1.setAttribute('fill', '#65676e');
+      svg.appendChild(dot1);
+
+      const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const cp2x = pr.x - 30;
+      path2.setAttribute('d', `M ${pr.x - 85} ${pr.y - 15} C ${cp2x} ${pr.y - 15}, ${cp2x} ${oi.y + 15}, ${oi.x + 90} ${oi.y + 15}`);
+      path2.setAttribute('class', 'relationship-line');
+      svg.appendChild(path2);
+
+      const dot2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      dot2.setAttribute('cx', oi.x + 90);
+      dot2.setAttribute('cy', oi.y + 15);
+      dot2.setAttribute('r', 4);
+      dot2.setAttribute('fill', '#65676e');
+      svg.appendChild(dot2);
+    }
+  </script>
+</body>
+</html>

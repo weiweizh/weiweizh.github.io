@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Association Deletion in DMB | Weiwei</title>
+  <link href="dist/output.css" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Larken';
+      src: url('dist/font/Larken-Bold.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; }
+    .font-serif { font-family: 'Larken', Georgia, serif; }
+  </style>
+</head>
+<body class="bg-stone-50 text-stone-900 antialiased">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-stone-900 focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-stone-400">
+    Skip to main content
+  </a>
+
+  <header class="sticky top-0 z-40 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group" aria-label="Weiwei UX Designer - Home">
+        <img src="dist/img/icon-w.svg" alt="" class="w-8 h-8" aria-hidden="true">
+        <span class="font-serif text-lg text-stone-800 group-hover:text-stone-600 transition-colors">Weiwei</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <li><a href="index.html#about" class="text-stone-600 hover:text-stone-900 transition-colors">About</a></li>
+          <li><a href="index.html#work" class="text-stone-600 hover:text-stone-900 transition-colors">Work</a></li>
+          <li><a href="index.html#writing" class="text-stone-600 hover:text-stone-900 transition-colors">Writing</a></li>
+          <li><a href="index.html#contact" class="text-stone-600 hover:text-stone-900 transition-colors">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="max-w-3xl mx-auto px-6 pt-16 pb-24">
+    <a href="index.html#work" class="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-stone-900 transition-colors mb-10">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+      Back to Work
+    </a>
+
+    <article>
+      <div class="bg-stone-100 rounded-2xl overflow-hidden mb-12">
+        <img src="dist/img/bg-association-deletion.png" alt="Association Deletion in DMB" class="w-full h-full object-cover">
+      </div>
+
+      <header class="mb-16">
+        <h1 class="font-serif text-4xl md:text-5xl text-stone-900 mb-4 leading-tight">Simplifying Association Deletion in the CRM Data Model Builder</h1>
+        <p class="text-lg md:text-xl text-stone-500 mb-8">Reducing a 50-step technical workflow to a 3-step guided experience for CRM administrators</p>
+
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-stone-100 text-stone-500 text-xs font-medium tracking-wide uppercase rounded-full">Senior Product Designer</span>
+          <span class="px-3 py-1 bg-stone-100 text-stone-500 text-xs font-medium tracking-wide uppercase rounded-full">UI/UX Design</span>
+          <span class="px-3 py-1 bg-stone-100 text-stone-500 text-xs font-medium tracking-wide uppercase rounded-full">System Design</span>
+        </div>
+      </header>
+
+      <div class="space-y-0">
+        <!-- Role & Impact -->
+        <section class="pb-16">
+          <div class="space-y-5 text-stone-600 leading-relaxed">
+            <p>
+              In HubSpot's CRM data model, <strong class="text-stone-900">associations</strong> define relationships between objects (for example, Contacts ↔ Deals). Associations can also include <strong class="text-stone-900">labels</strong> that describe the type of relationship.
+            </p>
+            <p>
+              Before this project, once an association definition was created, <strong class="text-stone-900">users could not delete it through the UI</strong>. The only option was to use the API and manually remove all dependencies first.
+            </p>
+            <p>
+              This limitation became more significant after we launched the <strong class="text-stone-900">Data Model Builder</strong>, a no-code schema builder that enables users to visually design their CRM data structure.
+            </p>
+            <div class="grid grid-cols-3 gap-6 pt-4 border border-stone-200 rounded-[12px] bg-stone-100 p-6 -mx-2">
+              <div>
+                <p class="text-xs font-medium tracking-wide uppercase text-stone-400 mb-1">Role</p>
+                <p class="text-sm text-stone-700 font-medium">Senior Product Designer</p>
+              </div>
+              <div>
+                <p class="text-xs font-medium tracking-wide uppercase text-stone-400 mb-1">Team</p>
+                <p class="text-sm text-stone-700 font-medium">PM, FE/BE Engineers, Platform</p>
+              </div>
+              <div>
+                <p class="text-xs font-medium tracking-wide uppercase text-stone-400 mb-1">Timeline</p>
+                <p class="text-sm text-stone-700 font-medium">Q1-Q2</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Context -->
+        <section class="pt-16 pb-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">Context</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Rapid adoption:</strong> Within three months of launching the Data Model Builder, association creation increased <strong class="text-stone-900">200%</strong>.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Growing demand:</strong> Customer feedback requesting <strong class="text-stone-900">association deletion via UI increased significantly</strong>.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Common use cases:</strong> Users need deletion when experimenting with schema designs, testing with sample data, or iterating as business needs evolve.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Expanding audience:</strong> The user base expanded beyond DataOps specialists and engineers to include <strong class="text-stone-900">"accidental admins"</strong>—users responsible for CRM configuration without technical backgrounds.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">UI accessibility gap:</strong> As the Data Model Builder expanded, schema management workflows that previously relied on APIs needed to become accessible through UI.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="pt-16 pb-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">The Problem</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Complex dependencies:</strong> Deleting an association involves multiple layers—assets (workflows, reports, views), records, and association labels with their own dependencies.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Scale problem:</strong> An association can contain up to 50 labels, each potentially used across records and assets.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Label-by-label cleanup:</strong> The system required resolving dependencies label by label, meaning users might have to repeat the cleanup process up to 50 times.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Poor UX exposure:</strong> While technically accurate, exposing this process directly in the UI would create a tedious and confusing experience.</p>
+            </div>
+          </div>
+          <div class="mt-8 relative group">
+            <img src="dist/img/associationDeletion-original flow.png" alt="Technical flowchart showing the complex dependency resolution process" class="rounded-2xl w-full">
+            <button onclick="openModal('modal-original')" class="absolute top-4 right-4 bg-stone-100 text-stone-600 p-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-stone-200" aria-label="Expand image">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+              </svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- Design Goal -->
+        <section class="pt-16 pb-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">Design Goal</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed">Enable users to <strong class="text-stone-900">safely delete associations through the UI</strong> while minimizing repetitive cleanup work.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed">Avoid exposing internal system complexity to users.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed">Provide a clear and predictable mental model for non-technical users.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Key Insight -->
+        <section class="pt-16 pb-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">Key Insight</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">User perspective:</strong> Users do not think about dependencies in terms of associations vs. labels. Instead, they think about <strong class="text-stone-900">where the relationship appears</strong>.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Three simple categories:</strong> From a user perspective, dependencies fall into three simple categories: (1) relationships between records, (2) usage inside assets (workflows, reports, views), and (3) label definitions.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Simplified model:</strong> This insight allowed us to collapse a highly nested technical process into a simpler conceptual model.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Solution -->
+        <section class="pt-16 pb-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">Solution</h2>
+          <div class="space-y-5 text-stone-600 leading-relaxed">
+            <p>
+              I redesigned the deletion experience into <strong class="text-stone-900">three high-level stages</strong>.
+            </p>
+            <ol class="space-y-6 pl-6 list-decimal marker:text-stone-400 marker:font-medium">
+              <li class="pl-2">
+                <strong class="text-stone-900">Step 1 — Remove associations from records</strong><br>
+                Users remove relationships between records (both labeled and unlabeled).
+              </li>
+              <li class="pl-2">
+                <strong class="text-stone-900">Step 2 — Clear associations from assets</strong><br>
+                The system identifies assets such as workflows, reports, and views that use the association and guides users to remove them.
+              </li>
+              <li class="pl-2">
+                <strong class="text-stone-900">Step 3 — Delete label definitions</strong><br>
+                Once dependencies are cleared, the label definitions can be deleted.
+              </li>
+            </ol>
+          </div>
+          <div class="mt-8 relative group">
+            <img src="dist/img/associationDeletion-simplified flow.png" alt="Simplified 3-step flow design" class="rounded-2xl w-full">
+            <button onclick="openModal('modal-simplified')" class="absolute top-4 right-4 bg-stone-100 text-stone-600 p-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-stone-200" aria-label="Expand image">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
+              </svg>
+            </button>
+          </div>
+          
+          <div class="align-top2 space-y-4">
+            <h3 class="text-lg font-semibold text-stone-900">Why This Works</h3>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Reduced complexity:</strong> This approach reduces a potential 50-cycle dependency process into three guided steps.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Clear mental model:</strong> Provides a simple conceptual framework for non-technical users to understand.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Eliminated repetition:</strong> Removes the need for repetitive label-by-label cleanup.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Scalable pattern:</strong> Creates a reusable approach for other deletion workflows across the platform.</p>
+            </div>
+            <p class="text-stone-600 leading-relaxed mt-4">
+              Supporting this design required <strong class="text-stone-900">additional backend work</strong> to consolidate dependency checks. I worked with the engineering team to align on the long-term UX value and prioritize the technical changes.
+            </p>
+          </div>
+        </section>
+
+        <!-- System Thinking -->
+        <section class="pt-16 pb-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">System Thinking</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Reusable pattern:</strong> Rather than designing this as a one-off solution, I structured the flow as a <strong class="text-stone-900">reusable dependency-resolution pattern</strong>.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Modular components:</strong> Each step functions as a modular component that identifies dependencies, guides cleanup actions, and confirms readiness for deletion.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Cross-team adoption:</strong> This architecture allowed another team to adopt the same pattern for <strong class="text-stone-900">association label deletion</strong>, creating a <strong class="text-stone-900">consistent experience across the CRM platform</strong>.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Impact -->
+        <section class="pt-16 pb-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">Outcome and Impact</h2>
+          <div class="space-y-6">
+            <blockquote class="pl-6 border-l-2 border-stone-300 italic text-stone-500">
+              <p class="mb-2">Final implementation phase; scheduled for Mid-Q2 2026 launch.</p>
+              <footer class="text-sm not-italic"><a href="https://ca-deletion-flow.lovable.app/" target="_blank" rel="noopener noreferrer" class="text-stone-900 underline">Prototype: Explore the Deletion Flow</a>
+            </blockquote>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Radical Workflow Simplification:</strong> Transformed a highly manual, 50-step technical process into an intuitive 3-step guided flow, reducing time-to-task completion and cognitive load.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Design System Contribution:</strong> Established a high-integrity deletion pattern that was subsequently codified and adopted for Association Label Deletion, driving cross-product UI consistency.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Anticipated CSAT Growth:</strong> Projected a +5% increase in CSAT based on early evaluative research and positive sentiment trends from beta participants.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Operational Cost Reduction:</strong> Expected to significantly decrease support overhead by self-serving a historically high-touch "Association Management" request volume.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- What I Learned -->
+        <section class="pt-16 pb-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">What I Learned</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Start with system complexity, not UI:</strong> Understanding the technical dependency graph with engineers early helped prevent designing an interface that mirrored internal system complexity.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Design mental models, not workflows:</strong> Simplifying the user's conceptual model had a bigger impact than simply reducing steps.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed"><strong class="text-stone-900">Build patterns, not features:</strong> Designing reusable dependency-resolution components allowed the pattern to scale across multiple deletion scenarios.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="pt-16 border-t border-stone-200">
+          <h2 class="text-xl md:text-2xl font-semibold text-stone-900 mb-6">Next Steps</h2>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed">Help users <strong class="text-stone-900">identify and remove association usage directly inside assets</strong>.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed">Provide <strong class="text-stone-900">jump-to locations</strong> for faster cleanup.</p>
+            </div>
+            <div class="flex gap-4">
+              <div class="pt-2"><span class="block w-1 h-1 rounded-full bg-stone-900"></span></div>
+              <p class="text-stone-600 leading-relaxed">Monitor customer feedback after launch to refine the workflow.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-stone-900 text-stone-400 py-10 mt-24">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <p class="text-sm">&copy; 2024 Weiwei</p>
+    </div>
+  </footer>
+
+  <div id="modal-original" class="fixed inset-0 bg-stone-900/95 z-50 hidden flex items-center justify-center p-4" onclick="closeModal(event, 'modal-original')">
+    <button onclick="closeModalBtn('modal-original')" class="absolute top-4 right-4 bg-stone-100 text-stone-600 p-3 rounded-lg hover:bg-stone-200" aria-label="Close">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <img src="dist/img/associationDeletion-original flow.png" alt="Technical flowchart" class="max-h-[90vh] max-w-full object-contain" onclick="event.stopPropagation()">
+  </div>
+
+  <div id="modal-simplified" class="fixed inset-0 bg-stone-900/95 z-50 hidden flex items-center justify-center p-4" onclick="closeModal(event, 'modal-simplified')">
+    <button onclick="closeModalBtn('modal-simplified')" class="absolute top-4 right-4 bg-stone-100 text-stone-600 p-3 rounded-lg hover:bg-stone-200" aria-label="Close">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <img src="dist/img/associationDeletion-simplified flow.png" alt="Simplified flow" class="max-h-[90vh] max-w-full object-contain" onclick="event.stopPropagation()">
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(event, id) {
+      if (event.target === event.currentTarget) {
+        document.getElementById(id).classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+    function closeModalBtn(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('[id^="modal-"]').forEach(m => m.classList.add('hidden'));
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+</body>
+</html>
