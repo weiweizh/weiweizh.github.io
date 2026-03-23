@@ -7,5 +7,7 @@ Build a static responsive website and deploy it on github.
 - Tailwind for Css framework to update the visuals
 - Using VS studio code + git + github push
 
+Step 2: rewrite it with AI agent ( so that I don't need to learn react ;)
+
 
 
