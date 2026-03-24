@@ -69,8 +69,8 @@
   <main id="main-content" class="max-w-5xl mx-auto px-6">
     <section id="about" class="min-h-[80vh] flex flex-col justify-center py-32">
       <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="order-2 md:order-1">
-          <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-stone-900 leading-tight mb-6">
+        <div class="fade-up stagger-1">
+          <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-stone-900 leading-tight mb-6 hero-title">
             Hi, I'm <span class="italic">Weiwei</span>
           </h1>
           <p class="text-lg text-stone-600 leading-relaxed mb-4 max-w-lg">
@@ -80,7 +80,7 @@
             Currently working on data products at HubSpot. Previously at Twilio Segment and Wise Systems.
           </p>
           <div class="flex flex-wrap gap-4">
-            <a href="#work" class="inline-flex items-center gap-2 px-5 py-3 bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2">
+            <a href="#work" class="inline-flex items-center gap-2 px-5 py-3 bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 btn-hover">
               View my work
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -88,7 +88,7 @@
             </a>
           </div>
         </div>
-        <div class="order-1 md:order-2 flex justify-center">
+        <div class="flex justify-center">
           <div class="relative w-64 h-64 md:w-80 md:h-80">
             <img 
               src="dist/img/weiwei.png" 
@@ -100,25 +100,19 @@
       </div>
     </section>
 
-    <section id="work" class="py-20 border-t border-stone-200">
-      <div class="flex items-baseline justify-between mb-12">
+    <section id="work" class="py-20 border-t border-stone-200 fade-up">
+      <div class="flex items-baseline mb-12">
         <h2 class="font-serif text-3xl md:text-4xl text-stone-900">Selected Work</h2>
-        <a href="mailto:weiweizh2017@gmail.com" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 rounded-sm px-1">
-          Request portfolio access
-          <svg class="w-4 h-4 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-          </svg>
-        </a>
       </div>
 
       <div class="space-y-16">
-        <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100">
+        <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100 fade-up stagger-1">
           <div class="block">
             <div class="aspect-[21/9] md:aspect-[16/9] bg-stone-100 overflow-hidden">
-              <img src="dist/img/bg-data-model-builder.png" alt="" class="w-full h-full object-cover object-[50%_15%] group-hover:object-[50%_10%] transition-all duration-500">
+              <img src="dist/img/bg-data-model-builder.png" alt="" class="w-full h-full object-cover object-[50%_15%] group-hover:object-[50%_10%] transition-all duration-500" loading="lazy">
             </div>
             <div class="p-8">
-              <h3 class="text-2xl font-semibold text-stone-900 mb-2">Data model builder</h3>
+              <h3 class="text-2xl font-semibold text-stone-900 mb-2 card-title">Data model builder</h3>
               <p class="text-stone-600 mb-4">A no-code data model builder enabling accidental admins and dataOps to configure their schema.</p>
 <a href="project-password.html?project=data-model-builder" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
                   <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -134,10 +128,10 @@
           <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100">
             <div class="block">
               <div class="aspect-[4/3] bg-stone-100 overflow-hidden" style="perspective: 1000px;">
-                <img src="dist/img/association-deletion-iso.png" alt="Association Deletion in Data Model Builder" class="w-full h-full object-cover isometric-img">
+                <img src="dist/img/association-deletion-iso.png" alt="Association Deletion in Data Model Builder" class="w-full h-full object-cover isometric-img" loading="lazy">
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-stone-900 mb-2">Association Deletion in Data Model Builder</h3>
+                <h3 class="text-xl font-semibold text-stone-900 mb-2 card-title">Association Deletion in Data Model Builder</h3>
                 <p class="text-stone-600 text-sm mb-4">System Design, UI/UX design</p>
                 <a href="project-password.html?project=association-deletion" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
                   <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -152,10 +146,10 @@
           <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100">
             <div class="block">
               <div class="aspect-[4/3] bg-stone-100 overflow-hidden">
-                <img src="dist/img/bg-action-mapping.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <img src="dist/img/bg-action-mapping.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
               </div>
               <div class="p-6">
-                <h3 class="text-xl font-semibold text-stone-900 mb-2">Destination action mapping updates</h3>
+                <h3 class="text-xl font-semibold text-stone-900 mb-2 card-title">Destination action mapping updates</h3>
                 <p class="text-stone-600 text-sm mb-4">Design strategy, Concept testing, Technical design</p>
                 <a href="project-password.html?project=mapping" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
                   <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -185,11 +179,11 @@
       </div>
     </section>
 
-    <section id="services" class="py-20 border-t border-stone-200">
+    <section id="services" class="py-20 border-t border-stone-200 fade-up">
       <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-12">What I do</h2>
       
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors">
+        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors service-card">
           <div class="flex justify-center mb-4">
             <img src="dist/img/end-to-end-design.svg" alt="" class="w-18 h-18">
           </div>
@@ -197,7 +191,7 @@
           <p class="text-stone-600 text-sm">From discovery to delivery, I craft cohesive product experiences.</p>
         </div>
 
-        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors">
+        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors service-card">
           <div class="flex justify-center mb-4">
             <img src="dist/img/User-research.svg" alt="" class="w-18 h-18">
           </div>
@@ -205,7 +199,7 @@
           <p class="text-stone-600 text-sm">Understanding users through interviews, surveys, and usability studies.</p>
         </div>
 
-        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors">
+        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors service-card">
           <div class="flex justify-center mb-4">
             <img src="dist/img/usability-testing.svg" alt="" class="w-18 h-18">
           </div>
@@ -213,7 +207,7 @@
           <p class="text-stone-600 text-sm">Validating designs with real users to ensure intuitive experiences.</p>
         </div>
 
-        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors">
+        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors service-card">
           <div class="flex justify-center mb-4">
             <img src="dist/img/UXevaluation.svg" alt="" class="w-18 h-18">
           </div>
@@ -223,7 +217,7 @@
       </div>
     </section>
 
-    <section id="writing" class="py-20 border-t border-stone-200">
+    <section id="writing" class="py-20 border-t border-stone-200 fade-up">
       <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-12">Writing</h2>
       
       <div class="space-y-6">
@@ -231,9 +225,9 @@
           <a href="https://weiweiux.notion.site/CLIs-could-be-more-user-friendly-22080bcdf95b4f6fb7f44f78979014f0" target="_blank" rel="noopener noreferrer" class="block">
             <div class="flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors">
+                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors card-title">
                   CLIs could be more user friendly
-                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </h3>
@@ -252,9 +246,9 @@
           <a href="https://weiweiux.notion.site/Chat-gpt-with-better-UX-bd00b081fcde44da9bd741816b159ec8" target="_blank" rel="noopener noreferrer" class="block">
             <div class="flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors">
+                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors card-title">
                   A Chat-GPT with better user experience
-                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </h3>
@@ -273,9 +267,9 @@
           <a href="https://weiweiux.notion.site/How-to-use-tailwindCSS-to-build-your-portfolio-website-604a3a62e1ff4f378653b2eb66e63b31" target="_blank" rel="noopener noreferrer" class="block">
             <div class="flex items-start justify-between gap-4">
               <div>
-                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors">
+                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors card-title">
                   How to use TailwindCSS to build your portfolio website
-                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
                   </svg>
                 </h3>
@@ -292,7 +286,7 @@
       </div>
     </section>
 
-    <section id="contact" class="py-20 border-t border-stone-200">
+    <section id="contact" class="py-20 border-t border-stone-200 fade-up">
       <div class="max-w-2xl">
         <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-6">Let's work together</h2>
         <p class="text-lg text-stone-600 leading-relaxed mb-8">
@@ -340,6 +334,88 @@
     .group:hover .isometric-img {
       transform: scale(2.5);
     }
+    .card-title {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Animations */
+    :root {
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+      --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease-out-quart), transform 0.6s var(--ease-out-quart);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+    .stagger-5 { transition-delay: 0.5s; }
+
+    /* Hero text animation */
+    .hero-title {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroReveal 0.8s var(--ease-out-quint) 0.2s forwards;
+    }
+    @keyframes heroReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Button hover */
+    .btn-hover {
+      transition: transform 0.2s var(--ease-out-quart), box-shadow 0.2s var(--ease-out-quart);
+    }
+    .btn-hover:hover {
+      transform: scale(1.02);
+    }
+    .btn-hover:active {
+      transform: scale(0.98);
+    }
+
+    /* Link arrow slide */
+    .link-arrow {
+      transition: transform 0.3s var(--ease-out-quart);
+    }
+    .group:hover .link-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Services card lift */
+    .service-card {
+      transition: transform 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up,
+      .hero-title,
+      .btn-hover,
+      .link-arrow,
+      .service-card {
+        transition: none !important;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
   </style>
 
   <script>
@@ -363,6 +439,19 @@
     if (prefersReducedMotion.matches) {
       document.documentElement.style.scrollBehavior = 'auto';
     }
+
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      observer.observe(el);
+    });
   </script>
 </body>
 </html>
