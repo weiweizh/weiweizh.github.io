@@ -6,6 +6,7 @@
   <meta name="description" content="Weiwei - UX Designer specializing in user-centered design, research, and data-driven product experiences">
   <title>Weiwei | UX Designer</title>
   <link href="dist/output.css?v=4" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="icon" href="dist/img/icon-w-layered.ico" sizes="any">
   <link rel="icon" href="dist/img/icon-w.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="dist/img/icon-w-apple-touch.png">
@@ -19,16 +20,26 @@
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', system-ui, sans-serif; }
+    body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='11.5' fill='%23fafaf9' stroke='%231c1917' stroke-width='1'/%3E%3Ccircle cx='13' cy='13' r='3.2' fill='%231c1917'/%3E%3C/svg%3E") 13 13, auto; }
     .font-serif { font-family: 'Larken', Georgia, serif; }
+    .exploration-jump:hover {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='11.5' fill='%23fafaf9' stroke='%231c1917' stroke-width='1'/%3E%3Cpath d='M13 7.8v10.4M8.5 14.2l4.5 4.5 4.5-4.5' fill='none' stroke='%231c1917' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 13 13, pointer;
+    }
+    #sketch-grid {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.28;
+      z-index: 0;
+    }
   </style>
 </head>
 <body class="bg-stone-50 text-stone-900 antialiased">
-  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-stone-900 focus:text-white focus:rounded-md focus:outline-none focus:ring-2 focus:ring-stone-400">
-    Skip to main content
-  </a>
-
+  <canvas id="sketch-grid" aria-hidden="true"></canvas>
   <header class="sticky top-0 z-40 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
-    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="max-w-[92%] sm:max-w-[70%] lg:max-w-[50%] mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2 group" aria-label="Weiwei UX Designer - Home">
         <img src="dist/img/icon-w.svg" alt="" class="w-8 h-8" aria-hidden="true">
         <span class="font-serif text-lg text-stone-800 group-hover:text-stone-600 transition-colors">Weiwei</span>
@@ -49,8 +60,8 @@
         
         <ul id="main-menu" class="hidden md:flex items-center gap-8 text-sm font-medium">
           <li><a href="#about" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">About</a></li>
+          <li><a href="#exploration" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">Explorations</a></li>
           <li><a href="#work" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">Work</a></li>
-          <li><a href="#writing" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">Writing</a></li>
           <li><a href="#contact" class="text-stone-600 hover:text-stone-900 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 rounded-sm px-1">Contact</a></li>
         </ul>
       </nav>
@@ -59,27 +70,36 @@
     <div id="mobile-menu" class="hidden md:hidden bg-stone-50 border-t border-stone-200">
       <ul class="px-6 py-4 space-y-4 text-sm font-medium">
         <li><a href="#about" class="block text-stone-600 hover:text-stone-900 py-2">About</a></li>
+        <li><a href="#exploration" class="block text-stone-600 hover:text-stone-900 py-2">Explorations</a></li>
         <li><a href="#work" class="block text-stone-600 hover:text-stone-900 py-2">Work</a></li>
-        <li><a href="#writing" class="block text-stone-600 hover:text-stone-900 py-2">Writing</a></li>
         <li><a href="#contact" class="block text-stone-600 hover:text-stone-900 py-2">Contact</a></li>
       </ul>
     </div>
   </header>
 
-  <main id="main-content" class="max-w-5xl mx-auto px-6">
+  <main id="main-content" class="max-w-[92%] sm:max-w-[70%] lg:max-w-[50%] mx-auto px-6">
     <section id="about" class="min-h-[80vh] flex flex-col justify-center py-32">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="flex flex-col items-start text-left gap-10">
+        <div class="flex justify-center">
+          <div class="relative w-12 h-12">
+            <img
+              src="dist/img/weiwei.png"
+              alt="Weiwei - Product Designer portrait"
+              class="w-full h-full object-cover rounded-2xl hero-portrait"
+            >
+          </div>
+        </div>
         <div class="fade-up stagger-1">
-          <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-stone-900 leading-tight mb-6 hero-title">
+          <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl text-stone-900 leading-tight mb-6 hero-title">
             Hi, I'm <span class="italic">Weiwei</span>
           </h1>
-          <p class="text-lg text-stone-600 leading-relaxed mb-4 max-w-lg">
-            A UX designer with expertise in <strong class="text-stone-900">research, strategy, design, and execution</strong>. I help companies build user-centered products that solve complex problems.
+          <p class="text-base text-stone-600 leading-relaxed mb-4">
+            I design data products that turn complex problems into clear, useful experiences. I bring <strong class="text-stone-900">research, strategy, design, and execution</strong> together to help founders and product teams turn ambitious ideas into products people enjoy using.
           </p>
-          <p class="text-lg text-stone-600 leading-relaxed mb-6 max-w-lg">
-            Currently working on data products at HubSpot. Previously at Twilio Segment and Wise Systems.
+          <p class="text-base text-stone-600 leading-relaxed mb-6">
+            I designed data products at HubSpot and Twilio Segment, and logistics planning at Wise Systems. Right now I'm taking a deliberate pause to spend more time with my family and <a href="#exploration" class="exploration-jump underline decoration-stone-300 underline-offset-4 transition-colors duration-300 hover:text-teal-800 hover:decoration-teal-800">build things</a> that make me curious. I'm open to consulting projects—if you're building something interesting, I'd love to hear about it.
           </p>
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-4 justify-start">
             <a href="#work" class="inline-flex items-center gap-2 px-5 py-3 bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 btn-hover">
               View my work
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -88,52 +108,93 @@
             </a>
           </div>
         </div>
-        <div class="flex justify-center">
-          <div class="relative w-64 h-64 md:w-80 md:h-80">
-            <img 
-              src="dist/img/weiwei.png" 
-              alt="Weiwei - UX Designer portrait"
-              class="w-full h-full object-cover rounded-2xl hero-portrait"
-            >
+      </div>
+    </section>
+
+    <section id="exploration" class="py-20 border-t border-stone-200 fade-up">
+      <button id="exploration-toggle" class="w-full flex items-center justify-between text-left mb-2 group" aria-expanded="true" aria-controls="exploration-content">
+        <h2 class="font-serif text-3xl md:text-4xl text-stone-900">Explorations</h2>
+        <svg id="exploration-chevron" class="w-6 h-6 text-stone-400 shrink-0 transition-transform duration-300 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <p class="text-lg text-stone-600 mb-12">Things I'm building</p>
+      <div id="exploration-collapsed" class="hidden">
+        <ul class="divide-y divide-stone-200">
+          <li class="py-4"><a href="https://weiweizh.github.io/kaleida/" target="_blank" rel="noopener noreferrer" class="font-medium text-stone-900 hover:text-stone-600 transition-colors">Kaleidoscope</a></li>
+          <li class="py-4"><a href="https://flavor-sketch-424032481457.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="font-medium text-stone-900 hover:text-stone-600 transition-colors">Coffee flavor sketch</a></li>
+          <li class="py-4"><span class="font-medium text-stone-900">Daily health checkin</span></li>
+          <li class="py-4"><a href="https://weiweizh.github.io/portfolio-backtest-simulator/" target="_blank" rel="noopener noreferrer" class="font-medium text-stone-900 hover:text-stone-600 transition-colors">Portfolio backtest simulator</a></li>
+        </ul>
+      </div>
+      <div id="exploration-content">
+        <div class="grid gap-6">
+          <a href="https://weiweizh.github.io/kaleida/" target="_blank" rel="noopener noreferrer" class="group block relative bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card hide-thumbnail-icon">
+            <div class="aspect-[4/3] bg-stone-100 overflow-visible relative card-img-container">
+              <div class="absolute inset-0 overflow-hidden">
+                <img src="dist/img/Kailedoscope-img.png" alt="Kaleidoscope" class="w-full h-full object-cover object-left-top kaleidoscope-img" loading="lazy">
+              </div>
+              <div class="thumbnail-external-icon absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-90 transition-opacity duration-400 shadow-sm">
+                <i class="bi bi-arrow-up-right-circle-fill text-stone-600 text-base" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="p-4 relative">
+              <h3 class="font-semibold text-stone-900 mb-1">Kaleidoscope</h3>
+              <p class="text-stone-500 text-sm">Use a kaleidoscope to create patterns — the only limit is your imagination.</p>
+            </div>
+          </a>
+
+          <a href="https://flavor-sketch-424032481457.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="group block bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden card-img-container">
+              <img src="dist/img/coffee%20tasting%20notes.png" alt="Coffee flavor sketch" class="w-full h-full object-cover object-center kaleidoscope-img coffee-flavor-img" loading="lazy">
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-stone-900 mb-1">Coffee flavor sketch</h3>
+              <p class="text-stone-500 text-sm">A space to sketch and explore coffee flavor notes.</p>
+            </div>
+          </a>
+
+          <div class="group block bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden card-img-container">
+              <img src="dist/img/daily%20health%20checkin.png" alt="Daily health checkin" class="w-full h-full object-cover object-left-top kaleidoscope-img" loading="lazy">
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-stone-900 mb-1">Daily health checkin</h3>
+              <p class="text-stone-500 text-sm">Coming soon.</p>
+            </div>
           </div>
+
+          <a href="https://weiweizh.github.io/portfolio-backtest-simulator/" target="_blank" rel="noopener noreferrer" class="group block bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden card-img-container">
+              <img src="dist/img/portfolio%20backtest.png" alt="Portfolio backtest simulator" class="w-full h-full object-cover object-left-top kaleidoscope-img" loading="lazy">
+            </div>
+            <div class="p-4">
+              <h3 class="font-semibold text-stone-900 mb-1">Portfolio backtest simulator</h3>
+              <p class="text-stone-500 text-sm">Backtest portfolio strategies with 20 years of real historical data.</p>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
     <section id="work" class="py-20 border-t border-stone-200 fade-up">
-      <div class="flex items-baseline mb-12">
+      <button id="work-toggle" class="w-full flex items-center justify-between text-left mb-12 group" aria-expanded="false" aria-controls="work-content">
         <h2 class="font-serif text-3xl md:text-4xl text-stone-900">Selected Work</h2>
-      </div>
-
-      <div class="space-y-16">
-        <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100 project-card">
-          <div class="block">
-            <div class="aspect-[21/9] md:aspect-[16/9] bg-stone-100 overflow-hidden">
-              <img src="dist/img/bg-data-model-builder.png" alt="" class="w-full h-full object-cover object-[50%_15%] group-hover:object-[50%_10%] transition-all duration-500" loading="lazy">
-            </div>
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold text-stone-900 mb-2 card-title">Data model builder</h3>
-              <p class="text-stone-600 mb-4">A no-code data model builder enabling accidental admins and dataOps to configure their schema.</p>
-<a href="project-password.html?project=data-model-builder" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                  </svg>
-                  Password protected
-                </a>
-            </div>
-          </div>
-        </article>
-
-        <div class="grid md:grid-cols-2 gap-8 mt-16">
-          <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100 project-card fade-up">
+        <svg id="work-chevron" class="w-6 h-6 text-stone-400 shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <div id="work-content" class="hidden">
+        <div class="space-y-16">
+          <article class="group bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
             <div class="block">
-              <div class="aspect-[4/3] bg-stone-100 overflow-hidden" style="perspective: 1000px;">
-                <img src="dist/img/association-deletion-iso.png" alt="Association Deletion in Data Model Builder" class="w-full h-full object-cover isometric-img" loading="lazy">
+              <div class="aspect-[21/9] md:aspect-[16/9] bg-stone-100 overflow-hidden">
+                <img src="dist/img/bg-data-model-builder.png" alt="" class="w-full h-full object-cover object-[50%_15%] group-hover:object-[50%_10%] transition-all duration-500" loading="lazy">
               </div>
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-stone-900 mb-2 card-title">Association Deletion in Data Model Builder</h3>
-                <p class="text-stone-600 text-sm mb-4">System Design, UI/UX design</p>
-                <a href="project-password.html?project=association-deletion" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
+              <div class="p-8">
+                <h3 class="text-2xl font-semibold text-stone-900 mb-2 card-title">Data model builder</h3>
+                <p class="text-stone-600 mb-4"><a href="https://knowledge.hubspot.com/data-management/use-the-data-model-builder" target="_blank" rel="noopener noreferrer" class="underline hover:text-stone-900">A no-code data model builder</a> enabling accidental admins and dataOps to configure their schema.</p>
+                <a href="project-password.html?project=data-model-builder" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
                   <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                   </svg>
@@ -143,146 +204,44 @@
             </div>
           </article>
 
-          <article class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-stone-100 project-card fade-up">
-            <div class="block">
-              <div class="aspect-[4/3] bg-stone-100 overflow-hidden">
-                <img src="dist/img/bg-action-mapping.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+          <div class="grid gap-8 mt-16">
+            <article class="group bg-white rounded-xl overflow-hidden shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card fade-up">
+              <div class="block">
+                <div class="aspect-[4/3] bg-stone-100 overflow-hidden card-img-container" style="perspective: 1000px;">
+                  <img src="dist/img/association-deletion-iso.png" alt="Association Deletion in Data Model Builder" class="w-full h-full object-cover isometric-img" loading="lazy">
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold text-stone-900 mb-2 card-title">Association Deletion in Data Model Builder</h3>
+                  <p class="text-stone-600 text-sm mb-4">System Design, UI/UX design</p>
+                  <a href="project-password.html?project=association-deletion" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
+                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                    Password protected
+                  </a>
+                </div>
               </div>
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-stone-900 mb-2 card-title">Destination action mapping updates</h3>
-                <p class="text-stone-600 text-sm mb-4">Design strategy, Concept testing, Technical design</p>
-                <a href="project-password.html?project=mapping" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                  </svg>
-                  Password protected
-                </a>
+            </article>
+
+            <article class="group bg-white rounded-xl overflow-hidden shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card fade-up">
+              <div class="block">
+            <div class="aspect-[4/3] bg-stone-100 overflow-hidden border border-stone-200 card-img-container">
+                  <img src="dist/img/bg-action-mapping.png" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-semibold text-stone-900 mb-2 card-title">Destination action mapping updates</h3>
+                  <p class="text-stone-600 text-sm mb-4">Design strategy, Concept testing, Technical design</p>
+                  <a href="project-password.html?project=mapping" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs text-stone-500 bg-stone-100 px-2 py-1 rounded hover:bg-stone-200 transition-colors">
+                    <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                    Password protected
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="mt-12 p-8 bg-stone-100 rounded-xl">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-lg font-semibold text-stone-900 mb-1">More case studies available</h3>
-            <p class="text-stone-600 text-sm">I have additional projects I'd be happy to share upon request.</p>
+            </article>
           </div>
-          <a href="mailto:weiweizh2017@gmail.com" class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 whitespace-nowrap">
-            Request access
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-            </svg>
-          </a>
         </div>
-      </div>
-    </section>
-
-    <section id="services" class="py-20 border-t border-stone-200 fade-up">
-      <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-12">What I do</h2>
-      
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors service-card">
-          <div class="flex justify-center mb-4">
-            <img src="dist/img/end-to-end-design.svg" alt="" class="w-18 h-18">
-          </div>
-          <h3 class="font-semibold text-stone-900 mb-2">End-to-end Design</h3>
-          <p class="text-stone-600 text-sm">From discovery to delivery, I craft cohesive product experiences.</p>
-        </div>
-
-        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors service-card">
-          <div class="flex justify-center mb-4">
-            <img src="dist/img/User-research.svg" alt="" class="w-18 h-18">
-          </div>
-          <h3 class="font-semibold text-stone-900 mb-2">User Research</h3>
-          <p class="text-stone-600 text-sm">Understanding users through interviews, surveys, and usability studies.</p>
-        </div>
-
-        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors service-card">
-          <div class="flex justify-center mb-4">
-            <img src="dist/img/usability-testing.svg" alt="" class="w-18 h-18">
-          </div>
-          <h3 class="font-semibold text-stone-900 mb-2">Usability Testing</h3>
-          <p class="text-stone-600 text-sm">Validating designs with real users to ensure intuitive experiences.</p>
-        </div>
-
-        <div class="p-6 bg-white rounded-xl border border-stone-100 hover:border-stone-300 transition-colors service-card">
-          <div class="flex justify-center mb-4">
-            <img src="dist/img/UXevaluation.svg" alt="" class="w-18 h-18">
-          </div>
-          <h3 class="font-semibold text-stone-900 mb-2">UX Evaluation</h3>
-          <p class="text-stone-600 text-sm">Auditing existing products and identifying improvement opportunities.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="writing" class="py-20 border-t border-stone-200 fade-up">
-      <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-12">Writing</h2>
-      
-      <div class="space-y-6">
-        <article class="group">
-          <a href="https://weiweiux.notion.site/CLIs-could-be-more-user-friendly-22080bcdf95b4f6fb7f44f78979014f0" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors card-title">
-                  CLIs could be more user friendly
-                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                </h3>
-                <p class="text-stone-500 text-sm mt-1">April 7, 2023</p>
-              </div>
-              <span class="text-stone-400 shrink-0" aria-hidden="true">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </span>
-            </div>
-          </a>
-        </article>
-
-        <article class="group">
-          <a href="https://weiweiux.notion.site/Chat-gpt-with-better-UX-bd00b081fcde44da9bd741816b159ec8" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors card-title">
-                  A Chat-GPT with better user experience
-                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                </h3>
-                <p class="text-stone-500 text-sm mt-1">March 12, 2023</p>
-              </div>
-              <span class="text-stone-400 shrink-0" aria-hidden="true">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </span>
-            </div>
-          </a>
-        </article>
-
-        <article class="group">
-          <a href="https://weiweiux.notion.site/How-to-use-tailwindCSS-to-build-your-portfolio-website-604a3a62e1ff4f378653b2eb66e63b31" target="_blank" rel="noopener noreferrer" class="block">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-lg font-medium text-stone-900 group-hover:text-stone-600 transition-colors card-title">
-                  How to use TailwindCSS to build your portfolio website
-                  <svg class="w-4 h-4 inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                </h3>
-                <p class="text-stone-500 text-sm mt-1">June 26, 2022</p>
-              </div>
-              <span class="text-stone-400 shrink-0" aria-hidden="true">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-              </span>
-            </div>
-          </a>
-        </article>
       </div>
     </section>
 
@@ -290,8 +249,7 @@
       <div class="max-w-2xl">
         <h2 class="font-serif text-3xl md:text-4xl text-stone-900 mb-6">Let's work together</h2>
         <p class="text-lg text-stone-600 leading-relaxed mb-8">
-          I'm currently exploring new opportunities in data analytics, ML, and developer tooling. 
-          If you have open roles or want to collaborate, I'd love to hear from you.
+          I'm currently open to new opportunities in data analytics, ML, and developer tooling. If you have a role in mind—or just want to talk—I'd love to hear from you.
         </p>
         <a href="mailto:weiweizh2017@gmail.com" class="inline-flex items-center gap-2 px-6 py-4 bg-stone-900 text-white font-medium rounded-lg hover:bg-stone-700 transition-colors focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-offset-2 email-btn">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -317,17 +275,52 @@
   </main>
 
   <footer class="bg-stone-900 text-stone-400 py-12 mt-20">
-    <div class="max-w-5xl mx-auto px-6">
+    <div class="max-w-[92%] sm:max-w-[70%] lg:max-w-[50%] mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-sm">© 2025 Weiwei</p>
-        <p class="text-sm">Designed with care, built with opencode</p>
+        <p class="text-sm">Designed and built with care</p>
       </div>
     </div>
   </footer>
 
   <style>
+    /* Kaleidoscope image tilt and hover */
+    .kaleidoscope-img {
+      transform: perspective(800px) rotateY(0deg) scale(1.1);
+      transform-origin: left top;
+      transition: transform 0.88s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .group:hover .kaleidoscope-img {
+      transform: perspective(800px) rotateY(0deg) scale(1.2);
+      transform-origin: left top;
+    }
+    .coffee-flavor-img {
+      transform: perspective(800px) rotateY(0deg) scale(1.01);
+    }
+    .group:hover .coffee-flavor-img {
+      transform: perspective(800px) rotateY(0deg) scale(1.05);
+    }
+
+    .card-copy {
+      position: relative;
+    }
+    .cloud-magic-wand {
+      position: absolute;
+      right: -43px;
+      bottom: 8px;
+      width: 7.2rem;
+      height: auto;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(0, 0) rotate(0deg) scale(1);
+      transform-origin: bottom right;
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover .cloud-magic-wand {
+      opacity: 0.95;
+    }
+
     .isometric-img {
-      transform: scale(2);
       transform-origin: center center;
       transition: transform 0.5s ease;
     }
@@ -424,8 +417,17 @@
     .project-card {
       transition: transform 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart);
     }
-    .project-card:hover {
-      transform: translateY(-6px);
+    .card-img-container {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='11.5' fill='%231c1917' stroke='%23fafaf9' stroke-width='1'/%3E%3Cpath d='M10.2 15.8L15.8 10.2M11.9 10.2h3.9v3.9' fill='none' stroke='%23fafaf9' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 13 13, pointer;
+    }
+    .hide-thumbnail-icon .thumbnail-external-icon {
+      display: none;
+    }
+    .card-img-container {
+      transition: box-shadow 0.3s ease;
+    }
+    .project-card:hover .card-img-container {
+      box-shadow: inset 0 5px 6px 0 rgb(0 0 0 / 0.1);
     }
 
     /* Delight: Email button pulse */
@@ -475,6 +477,64 @@
         mobileMenu.classList.add('hidden');
       });
     });
+
+    function initCollapsible(toggleId, contentId, chevronId, collapsedId) {
+      const toggle = document.getElementById(toggleId);
+      const content = document.getElementById(contentId);
+      const chevron = document.getElementById(chevronId);
+      const collapsed = collapsedId ? document.getElementById(collapsedId) : null;
+      toggle.addEventListener('click', () => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !isExpanded);
+        content.classList.toggle('hidden');
+        if (collapsed) collapsed.classList.toggle('hidden');
+        chevron.classList.toggle('rotate-180');
+      });
+    }
+    initCollapsible('exploration-toggle', 'exploration-content', 'exploration-chevron', 'exploration-collapsed');
+    initCollapsible('work-toggle', 'work-content', 'work-chevron');
+
+    function addMagicWandSticker(card) {
+      const copy = card.querySelector('.p-4, .p-6, .p-8');
+      if (!copy) return;
+
+      copy.classList.add('card-copy');
+      const sticker = document.createElement('img');
+      sticker.src = 'dist/img/cloud-magic-wand.png';
+      sticker.alt = '';
+      sticker.className = 'cloud-magic-wand';
+      sticker.setAttribute('aria-hidden', 'true');
+      copy.appendChild(sticker);
+    }
+
+    document.querySelectorAll('.project-card').forEach(addMagicWandSticker);
+
+    const sketchGrid = document.getElementById('sketch-grid');
+    const sketchContext = sketchGrid.getContext('2d');
+    function drawSketchGrid() {
+      const ratio = window.devicePixelRatio || 1;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      sketchGrid.width = width * ratio;
+      sketchGrid.height = height * ratio;
+      sketchContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+      sketchContext.clearRect(0, 0, width, height);
+      sketchContext.strokeStyle = 'rgba(120, 113, 108, 0.12)';
+      sketchContext.lineWidth = 1;
+      const spacing = 16;
+      sketchContext.beginPath();
+      for (let x = 0.5; x <= width; x += spacing) {
+        sketchContext.moveTo(x, 0);
+        sketchContext.lineTo(x, height);
+      }
+      for (let y = 0.5; y <= height; y += spacing) {
+        sketchContext.moveTo(0, y);
+        sketchContext.lineTo(width, y);
+      }
+      sketchContext.stroke();
+    }
+    drawSketchGrid();
+    window.addEventListener('resize', drawSketchGrid, { passive: true });
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (prefersReducedMotion.matches) {

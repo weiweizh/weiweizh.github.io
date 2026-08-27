@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#e7e5e4"/>
+  <g transform="translate(600 410)" text-anchor="middle">
+    <circle cx="0" cy="-60" r="40" fill="none" stroke="#a8a29e" stroke-width="3"/>
+    <path d="M-24 -60 l16 -20 12 8 14 -18 12 14 14 -10" fill="none" stroke="#a8a29e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text y="60" font-family="system-ui, sans-serif" font-size="28" fill="#78716c">Screenshot coming soon</text>
+  </g>
+</svg>
