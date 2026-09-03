@@ -20,11 +20,79 @@
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', system-ui, sans-serif; }
-    body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='11.5' fill='%23fafaf9' stroke='%231c1917' stroke-width='1'/%3E%3Ccircle cx='13' cy='13' r='3.2' fill='%231c1917'/%3E%3C/svg%3E") 13 13, auto; }
+    body { cursor: none; }
     .font-serif { font-family: 'Larken', Georgia, serif; }
     .exploration-jump:hover {
       cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='11.5' fill='%23fafaf9' stroke='%231c1917' stroke-width='1'/%3E%3Cpath d='M13 7.8v10.4M8.5 14.2l4.5 4.5 4.5-4.5' fill='none' stroke='%231c1917' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 13 13, pointer;
     }
+    #link-cursor {
+      position: fixed;
+      z-index: 100;
+      width: 26px;
+      height: 26px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate3d(-50%, -50%, 0);
+      will-change: transform;
+      border-radius: 50%;
+      isolation: isolate;
+      transition: opacity 0.2s ease;
+    }
+    #link-cursor.visible { opacity: 1; }
+    #link-cursor::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid #fafaf9;
+      border-radius: 50%;
+      background: #1c1917;
+      opacity: 0.82;
+      mix-blend-mode: difference;
+    }
+    #link-cursor svg {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: normal;
+    }
+    #default-cursor {
+      position: fixed;
+      z-index: 9998;
+      width: 26px;
+      height: 26px;
+      pointer-events: none;
+      opacity: 1;
+      transform: translate3d(-50%, -50%, 0);
+      will-change: transform;
+      isolation: isolate;
+      transition: opacity 0.2s ease;
+    }
+    #default-cursor::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid #1c1917;
+      border-radius: 50%;
+      background: #fafaf9;
+      opacity: 0.82;
+      mix-blend-mode: difference;
+    }
+    #default-cursor::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6.4px;
+      height: 6.4px;
+      border-radius: 50%;
+      background: #1c1917;
+      transform: translate(-50%, -50%);
+    }
+    #default-cursor.thumbnail-hover::before {
+      opacity: 0.8;
+    }
+    #default-cursor.hidden { opacity: 0; }
     #sketch-grid {
       position: fixed;
       inset: 0;
@@ -38,6 +106,12 @@
 </head>
 <body class="bg-stone-50 text-stone-900 antialiased">
   <canvas id="sketch-grid" aria-hidden="true"></canvas>
+  <div id="link-cursor" aria-hidden="true">
+    <svg viewBox="0 0 26 26" fill="none">
+      <path d="M10.2 15.8L15.8 10.2M11.9 10.2h3.9v3.9" stroke="#fafaf9" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </div>
+  <div id="default-cursor" aria-hidden="true"></div>
   <header class="sticky top-0 z-40 bg-stone-50/95 backdrop-blur-sm border-b border-stone-200">
     <div class="max-w-[92%] sm:max-w-[70%] lg:max-w-[50%] mx-auto px-6 py-4 flex items-center justify-between">
       <a href="/" class="flex items-center gap-2 group" aria-label="Weiwei UX Designer - Home">
@@ -129,34 +203,42 @@
       </div>
       <div id="exploration-content">
         <div class="grid gap-6">
-          <a href="https://weiweizh.github.io/kaleida/" target="_blank" rel="noopener noreferrer" class="group block relative bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card hide-thumbnail-icon">
+          <div class="group block relative bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
             <div class="aspect-[4/3] bg-stone-100 overflow-visible relative card-img-container">
               <div class="absolute inset-0 overflow-hidden">
                 <img src="dist/img/Kailedoscope-img.png" alt="Kaleidoscope" class="w-full h-full object-cover object-left-top kaleidoscope-img" loading="lazy">
               </div>
-              <div class="thumbnail-external-icon absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-90 transition-opacity duration-400 shadow-sm">
-                <i class="bi bi-arrow-up-right-circle-fill text-stone-600 text-base" aria-hidden="true"></i>
+              <div class="project-actions absolute top-4 right-4 flex flex-wrap items-center gap-3">
+                <a href="https://weiweizh.github.io/kaleida/" target="_blank" rel="noopener noreferrer" class="secondary-action">Try the App</a>
+                <a href="https://github.com/weiweizh/kaleida" target="_blank" rel="noopener noreferrer" class="tertiary-action github-action" aria-label="Star the GitHub repo" title="Star the GitHub repo"><i class="bi bi-github" aria-hidden="true"></i></a>
               </div>
             </div>
             <div class="p-4 relative">
               <h3 class="font-semibold text-stone-900 mb-1">Kaleidoscope</h3>
               <p class="text-stone-500 text-sm">Use a kaleidoscope to create patterns — the only limit is your imagination.</p>
             </div>
-          </a>
+          </div>
 
-          <a href="https://flavor-sketch-424032481457.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="group block bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
+          <div class="group block bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
             <div class="aspect-[4/3] bg-stone-100 overflow-hidden card-img-container">
               <img src="dist/img/coffee%20tasting%20notes.png" alt="Coffee flavor sketch" class="w-full h-full object-cover object-center kaleidoscope-img coffee-flavor-img" loading="lazy">
+              <div class="project-actions absolute top-4 right-4 flex flex-wrap items-center gap-3">
+                <a href="https://flavor-sketch-424032481457.us-west1.run.app/" target="_blank" rel="noopener noreferrer" class="secondary-action">Try the App</a>
+                <a href="https://github.com/weiweizh/flavor-sketch---from-GAS" target="_blank" rel="noopener noreferrer" class="tertiary-action github-action" aria-label="Star the GitHub repo" title="Star the GitHub repo"><i class="bi bi-github" aria-hidden="true"></i></a>
+              </div>
             </div>
             <div class="p-4">
               <h3 class="font-semibold text-stone-900 mb-1">Coffee flavor sketch</h3>
               <p class="text-stone-500 text-sm">A space to sketch and explore coffee flavor notes.</p>
             </div>
-          </a>
+          </div>
 
           <div class="group block bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
             <div class="aspect-[4/3] bg-stone-100 overflow-hidden card-img-container">
-              <img src="dist/img/daily%20health%20checkin.png" alt="Daily health checkin" class="w-full h-full object-cover object-left-top kaleidoscope-img" loading="lazy">
+                <img src="dist/img/daily%20health%20checkin.png" alt="Daily health checkin" class="w-full h-full object-cover object-center kaleidoscope-img daily-health-img" loading="lazy">
+              <div class="project-actions absolute top-4 right-4 flex flex-wrap items-center gap-3">
+                <a href="https://github.com/weiweizh/health-pwa" target="_blank" rel="noopener noreferrer" class="tertiary-action github-action daily-health-github" aria-label="Star the GitHub repo" title="Star the GitHub repo"><i class="bi bi-github" aria-hidden="true"></i></a>
+              </div>
             </div>
             <div class="p-4">
               <h3 class="font-semibold text-stone-900 mb-1">Daily health checkin</h3>
@@ -164,15 +246,19 @@
             </div>
           </div>
 
-          <a href="https://weiweizh.github.io/portfolio-backtest-simulator/" target="_blank" rel="noopener noreferrer" class="group block bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
+          <div class="group block bg-white rounded-xl overflow-visible shadow-none hover:shadow-sm transition-shadow duration-300 border border-stone-200 project-card">
             <div class="aspect-[4/3] bg-stone-100 overflow-hidden card-img-container">
               <img src="dist/img/portfolio%20backtest.png" alt="Portfolio backtest simulator" class="w-full h-full object-cover object-left-top kaleidoscope-img" loading="lazy">
+              <div class="project-actions absolute top-4 right-4 flex flex-wrap items-center gap-3">
+                <a href="https://weiweizh.github.io/portfolio-backtest-simulator/" target="_blank" rel="noopener noreferrer" class="secondary-action">Try the App</a>
+                <a href="https://github.com/weiweizh/portfolio-backtest-simulator" target="_blank" rel="noopener noreferrer" class="tertiary-action github-action" aria-label="Star the GitHub repo" title="Star the GitHub repo"><i class="bi bi-github" aria-hidden="true"></i></a>
+              </div>
             </div>
             <div class="p-4">
               <h3 class="font-semibold text-stone-900 mb-1">Portfolio backtest simulator</h3>
               <p class="text-stone-500 text-sm">Backtest portfolio strategies with 20 years of real historical data.</p>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </section>
@@ -286,19 +372,21 @@
   <style>
     /* Kaleidoscope image tilt and hover */
     .kaleidoscope-img {
-      transform: perspective(800px) rotateY(0deg) scale(1.1);
+      transform: translateZ(0) scale(1.1);
       transform-origin: left top;
-      transition: transform 0.88s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+      backface-visibility: hidden;
     }
-    .group:hover .kaleidoscope-img {
-      transform: perspective(800px) rotateY(0deg) scale(1.2);
+    .card-img-container:hover .kaleidoscope-img {
+      transform: translateZ(0) scale(1.2);
       transform-origin: left top;
     }
     .coffee-flavor-img {
-      transform: perspective(800px) rotateY(0deg) scale(1.01);
+      transform: translateZ(0) scale(1.01);
     }
-    .group:hover .coffee-flavor-img {
-      transform: perspective(800px) rotateY(0deg) scale(1.05);
+    .card-img-container:hover .coffee-flavor-img {
+      transform: translateZ(0) scale(1.05);
     }
 
     .card-copy {
@@ -418,7 +506,85 @@
       transition: transform 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart);
     }
     .card-img-container {
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='11.5' fill='%231c1917' stroke='%23fafaf9' stroke-width='1'/%3E%3Cpath d='M10.2 15.8L15.8 10.2M11.9 10.2h3.9v3.9' fill='none' stroke='%23fafaf9' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 13 13, pointer;
+      position: relative;
+      cursor: none;
+    }
+    .project-actions {
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-img-container:hover .project-actions,
+    .card-img-container:focus-within .project-actions {
+      opacity: 1;
+    }
+    .secondary-action,
+    .tertiary-action {
+      font-size: 0.75rem;
+      line-height: 1rem;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='11.5' fill='%23fafaf9' fill-opacity='.78' stroke='%231c1917' stroke-width='1'/%3E%3Cpath d='M10.2 15.8L15.8 10.2M11.9 10.2h3.9v3.9' fill='none' stroke='%231c1917' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 13 13, pointer;
+    }
+    .secondary-action {
+      padding: 0.5rem 0.75rem;
+      color: #1c1917;
+      background: rgb(250 250 249 / 0.92);
+      border: 1px solid #d6d3d1;
+      border-radius: 0.5rem;
+    }
+    .secondary-action:hover {
+      background: #ffffff;
+      border-color: #78716c;
+    }
+    .tertiary-action {
+      color: #1c1917;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #a8a29e;
+    }
+    .github-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.125rem;
+      height: 2.125rem;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #d6d3d1;
+      border-radius: 0.5rem;
+      text-decoration: none;
+    }
+    .github-action:hover {
+      border-color: #78716c;
+      text-decoration: none;
+    }
+    .tertiary-action:hover {
+      color: #115e59;
+      text-decoration-color: #115e59;
+    }
+    .daily-health-github,
+    .daily-health-github:hover {
+      color: #ffffff;
+      text-decoration-color: rgb(255 255 255 / 0.8);
+    }
+    .project-actions.actions-light .secondary-action {
+      color: #fafaf9;
+      background: rgb(28 25 23 / 0.7);
+      border-color: rgb(250 250 249 / 0.7);
+    }
+    .project-actions.actions-light .secondary-action:hover {
+      background: rgb(28 25 23 / 0.9);
+      border-color: #fafaf9;
+    }
+    .project-actions.actions-light .tertiary-action {
+      color: #fafaf9;
+      text-decoration-color: rgb(250 250 249 / 0.7);
+    }
+    .project-actions.actions-light .tertiary-action:hover {
+      color: #ffffff;
+      text-decoration-color: #ffffff;
+    }
+    .secondary-action,
+    .tertiary-action {
+      cursor: none;
     }
     .hide-thumbnail-icon .thumbnail-external-icon {
       display: none;
@@ -508,6 +674,77 @@
     }
 
     document.querySelectorAll('.project-card').forEach(addMagicWandSticker);
+
+    function setActionContrast(container) {
+      const image = container.querySelector('img');
+      const actions = container.querySelector('.project-actions');
+      if (!image || !actions) return;
+
+      const update = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d', { willReadFrequently: true });
+          const width = image.naturalWidth;
+          const height = image.naturalHeight;
+          if (!width || !height) return;
+
+          canvas.width = width;
+          canvas.height = height;
+          context.drawImage(image, 0, 0);
+          const sampleWidth = Math.max(1, Math.floor(width * 0.4));
+          const sampleHeight = Math.max(1, Math.floor(height * 0.4));
+          const pixels = context.getImageData(width - sampleWidth, 0, sampleWidth, sampleHeight).data;
+          let luminance = 0;
+          for (let index = 0; index < pixels.length; index += 4) {
+            luminance += (0.299 * pixels[index]) + (0.587 * pixels[index + 1]) + (0.114 * pixels[index + 2]);
+          }
+          const average = luminance / (pixels.length / 4);
+          actions.classList.toggle('actions-light', average < 145);
+          actions.classList.toggle('actions-dark', average >= 145);
+        } catch (error) {
+          actions.classList.add('actions-dark');
+        }
+      };
+
+      if (image.complete) update();
+      image.addEventListener('load', update, { once: true });
+    }
+
+    document.querySelectorAll('.card-img-container').forEach(setActionContrast);
+
+    const linkCursor = document.getElementById('link-cursor');
+    const defaultCursor = document.getElementById('default-cursor');
+    let cursorFrame;
+    let cursorX = 0;
+    let cursorY = 0;
+    document.addEventListener('mousemove', event => {
+      cursorX = event.clientX;
+      cursorY = event.clientY;
+      cancelAnimationFrame(cursorFrame);
+      cursorFrame = requestAnimationFrame(() => {
+        const position = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+        linkCursor.style.left = '0';
+        linkCursor.style.top = '0';
+        defaultCursor.style.left = '0';
+        defaultCursor.style.top = '0';
+        linkCursor.style.transform = `${position} translate3d(-50%, -50%, 0)`;
+        defaultCursor.style.transform = `${position} translate3d(-50%, -50%, 0)`;
+      });
+    });
+    document.querySelectorAll('.secondary-action, .tertiary-action').forEach(link => {
+      link.addEventListener('mouseenter', () => linkCursor.classList.add('visible'));
+      link.addEventListener('mouseleave', () => linkCursor.classList.remove('visible'));
+    });
+
+    const cursorTargets = document.querySelectorAll('.secondary-action, .tertiary-action, .exploration-jump');
+    cursorTargets.forEach(target => {
+      target.addEventListener('mouseenter', () => defaultCursor.classList.add('hidden'));
+      target.addEventListener('mouseleave', () => defaultCursor.classList.remove('hidden'));
+    });
+    document.querySelectorAll('.card-img-container').forEach(thumbnail => {
+      thumbnail.addEventListener('mouseenter', () => defaultCursor.classList.add('thumbnail-hover'));
+      thumbnail.addEventListener('mouseleave', () => defaultCursor.classList.remove('thumbnail-hover'));
+    });
 
     const sketchGrid = document.getElementById('sketch-grid');
     const sketchContext = sketchGrid.getContext('2d');
